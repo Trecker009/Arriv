@@ -750,11 +750,6 @@ body.pdp-on .pbar{bottom:calc(92px + env(safe-area-inset-bottom,0px))}
 </footer>
 
 <div class="satc" id="satc" aria-hidden="true"></div>
-<nav class="pbar" aria-label="Prototype controls">
-  <a href="#home" data-pb="home">Home</a><a href="#shop" data-pb="shop">Collection</a><a href="#p-hair-mist" data-pb="p">Product</a><i></i>
-  <button type="button" id="notesBtn" aria-pressed="false">Shoot notes</button>
-  <button type="button" id="refBtn" aria-pressed="false">Hide REF tags</button>
-</nav>
 <div class="toast" id="toast" hidden></div>
 <div id="layer"></div>
 
@@ -1192,7 +1187,7 @@ function route(){const h=(location.hash||'#home').slice(1);$('#mega').hidden=tru
  else if(COLL[h]){html=pageColl(h);pb='shop'}
  else html=pageHome();
  $('#main').innerHTML=html;vidObs.disconnect();wireUgc();wireHero();
- $$('.pbar a').forEach(a=>a.classList.toggle('on',a.dataset.pb===pb));
+ 
  $$('.nav a[data-nav]').forEach(a=>a.classList.toggle('on',a.dataset.nav===h));
  if(h==='home-unsay'){requestAnimationFrame(()=>document.getElementById('home-unsay')?.scrollIntoView())}else window.scrollTo(0,0);
  setSatc(pb==='p'?h.slice(2):null);
@@ -1236,9 +1231,6 @@ $('#shopBtn').addEventListener('click',()=>{const m=$('#mega');m.hidden=!m.hidde
 $('#hdr').addEventListener('mouseleave',()=>{if(matchMedia('(hover:hover)').matches){$('#mega').hidden=true;$('#shopBtn').setAttribute('aria-expanded','false')}});
 $('#shopBtn').addEventListener('mouseenter',()=>{if(matchMedia('(hover:hover)').matches){$('#mega').hidden=false;$('#shopBtn').setAttribute('aria-expanded','true')}});
 $('#cartBtn').addEventListener('click',openCart);$('#burger').addEventListener('click',openMenu);
-$('#notesBtn').addEventListener('click',e=>{const on=document.body.classList.toggle('notes');e.currentTarget.setAttribute('aria-pressed',on);store.set('notes',on)});
-$('#refBtn').addEventListener('click',e=>{const on=document.body.classList.toggle('clean');e.currentTarget.setAttribute('aria-pressed',on)});
-if(store.get('notes',false)){document.body.classList.add('notes');$('#notesBtn').setAttribute('aria-pressed','true')}
 $('#ann').innerHTML=Array(2).fill(['Free shipping over ₹499','Free sticker pack in every order','Built for 42°C','7-day returns','Derm tested','Extra 10% off with ARRIVD10'].map(t=>`<span>${t}</span>`).join('')).join('');
 buildMega();syncCt();route();
 </script>
