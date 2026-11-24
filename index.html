@@ -1,0 +1,1244 @@
+<title>Arriv Bold Storefront</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&family=DM+Mono:wght@400;500&family=Caveat+Brush&display=swap">
+<style>
+/* Layout: bold D2C storefront. Ink + paper bands, pastel products on power grounds, Anton headlines. Single committed visual world (brand site), so colours are fixed rather than theme-switched. */
+:root{
+  color-scheme:light;
+  --ink:#131313; --ink2:#2A2A28; --paper:#F1F0EC; --paper2:#E6E4DE; --white:#FFFFFF; --mute:#6B6A65; --line:rgba(19,19,19,.14);
+  --signal:#E3361F; --cobalt:#2340D6;
+  --peach:#F3C2A3; --sage:#B8CAAE; --lilac:#CFC1E8; --rose:#EDB4BE; --sky:#BDD5EE; --sun:#E5872C; --note:#FFE27A;
+  --f-d:"Anton","Impact","Arial Narrow",sans-serif;
+  --f-b:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-m:"DM Mono",ui-monospace,Menlo,monospace;
+  --f-h:"Caveat Brush","Comic Sans MS",cursive;
+  --gl:max(20px,env(safe-area-inset-left,0px)); --gr:max(20px,env(safe-area-inset-right,0px));
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.55 var(--f-b);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:90;background:var(--ink)}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--signal);outline-offset:2px}
+.wrap{max-width:1360px;margin:0 auto;padding-left:var(--gl);padding-right:var(--gr)}
+.d{font-family:var(--f-d);font-weight:400;text-transform:uppercase;letter-spacing:.005em;line-height:.9;margin:0;text-wrap:balance}
+.m{font:500 12px/1.2 var(--f-m);letter-spacing:.1em;text-transform:uppercase}
+.hand{font-family:var(--f-h)}
+section{padding-block:84px}
+.ink{background:var(--ink);color:var(--paper)}
+.ink .mut{color:rgba(241,240,236,.62)}
+.mut{color:var(--mute)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:16px 26px;border-radius:999px;border:0;font:700 14px/1 var(--f-b);letter-spacing:.04em;text-transform:uppercase;transition:transform .15s ease,background .2s}
+.btn:active{transform:scale(.97)}
+.btn-red{background:var(--signal);color:#fff}
+.btn-red:hover{background:#c92c17}
+.btn-ink{background:var(--cobalt);color:var(--paper)}
+.btn-ghost{background:transparent;box-shadow:inset 0 0 0 2px currentColor}
+.btn-paper{background:var(--paper);color:var(--ink)}
+.btn-white{background:#fff;color:var(--signal)}
+.btn-white:hover{background:var(--note);color:var(--signal)}
+.stk{display:inline-block;font:400 15px/1 var(--f-d);text-transform:uppercase;letter-spacing:.03em;padding:10px 14px 9px;border-radius:999px;color:var(--ink);border:2.5px solid #fff;box-shadow:0 2px 0 rgba(0,0,0,.2),0 10px 22px rgba(0,0,0,.2);white-space:nowrap}
+.sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:36px;flex-wrap:wrap}
+.sec-head h2{font-size:clamp(44px,6.4vw,96px)}
+.eyebrow{display:flex;gap:10px;align-items:center;margin-bottom:14px}
+.eyebrow b{background:var(--signal);color:#fff;border-radius:999px;padding:4px 9px;font:500 11px/1 var(--f-m)}
+.link{font:700 13px/1 var(--f-b);text-transform:uppercase;letter-spacing:.06em;border-bottom:2px solid currentColor;padding-bottom:4px;white-space:nowrap}
+
+/* ——— reference images (Pinterest) ——— */
+.ref{position:relative;margin:0;overflow:hidden;background:var(--ink)}
+.ref img{width:100%;height:100%;object-fit:cover}
+.ref .rt{position:absolute;top:10px;left:10px;z-index:2;display:inline-flex;gap:6px;align-items:center;font:500 10px/1 var(--f-m);letter-spacing:.08em;text-transform:uppercase;background:rgba(19,19,19,.78);color:#fff;padding:6px 8px;border-radius:4px;backdrop-filter:blur(4px)}
+.ref .rt a{color:var(--note);text-decoration:underline}
+.ref .shot{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:34px 12px 12px;background:linear-gradient(transparent,rgba(0,0,0,.82));color:#fff;font:500 12.5px/1.35 var(--f-b);display:none}
+.ref .shot b{display:block;font:500 10px/1 var(--f-m);letter-spacing:.1em;text-transform:uppercase;color:var(--note);margin-bottom:5px}
+body.notes .ref .shot{display:block}
+body.clean .ref .rt{display:none}
+
+/* ——— presenter bar ——— */
+.pbar{position:fixed;z-index:80;left:50%;transform:translateX(-50%);bottom:max(14px,env(safe-area-inset-bottom,0px));display:flex;gap:4px;align-items:center;background:var(--ink);color:var(--paper);padding:5px;border-radius:999px;box-shadow:0 14px 40px rgba(0,0,0,.35);max-width:calc(100vw - 24px);overflow-x:auto;scrollbar-width:none}
+.pbar::-webkit-scrollbar{display:none}
+.pbar a,.pbar button{border:0;background:none;color:rgba(241,240,236,.7);font:500 11px/1 var(--f-m);letter-spacing:.06em;text-transform:uppercase;padding:10px 13px;border-radius:999px;white-space:nowrap}
+.pbar a.on{background:var(--paper);color:var(--ink)}
+.pbar button[aria-pressed="true"]{background:var(--note);color:var(--ink)}
+.pbar i{width:1px;height:20px;background:rgba(255,255,255,.18);margin:0 4px;flex:none}
+
+/* ——— header ——— */
+.ann{background:var(--signal);color:#fff;overflow:hidden;white-space:nowrap}
+.ann .track{display:inline-flex;gap:48px;padding:9px 0;animation:mq 38s linear infinite;font:500 12px/1 var(--f-m);letter-spacing:.1em;text-transform:uppercase}
+.ann .track span::after{content:"✺";margin-left:48px}
+@keyframes mq{to{transform:translateX(-50%)}}
+.hdr{position:sticky;top:env(safe-area-inset-top,0px);z-index:60;background:var(--ink);color:var(--paper)}
+.hdr .wrap{display:flex;align-items:center;gap:28px;height:72px}
+.logo{font:400 38px/1 var(--f-h);color:var(--paper);letter-spacing:-.01em;display:flex;align-items:center;gap:8px}
+.logo small{font:400 11px/1 var(--f-m);letter-spacing:.12em;background:var(--signal);color:#fff;padding:4px 6px 3px;border-radius:3px;text-transform:uppercase}
+.nav{display:flex;gap:4px;flex:1}
+.nav > a,.nav > button{background:none;border:0;color:var(--paper);font:400 17px/1 var(--f-d);letter-spacing:.04em;text-transform:uppercase;padding:12px 14px;border-radius:999px;transition:background .15s}
+.nav > a:hover,.nav > button:hover,.nav > button[aria-expanded="true"]{background:rgba(255,255,255,.1)}
+.nav > a.on{color:var(--note)}
+.nav .hot{color:var(--signal)}
+.icons{display:flex;gap:6px;align-items:center}
+.ic{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:none;border:0;color:var(--paper);position:relative}
+.ic:hover{background:rgba(255,255,255,.1)}
+.ic svg{width:22px;height:22px}
+.ic .ct{position:absolute;top:4px;right:2px;min-width:18px;height:18px;border-radius:9px;background:var(--signal);color:#fff;font:600 10px/18px var(--f-b);text-align:center;padding:0 4px}
+.burger{display:none}
+.mega{position:absolute;left:0;right:0;top:100%;background:var(--paper);color:var(--ink);border-bottom:3px solid var(--ink);box-shadow:0 30px 60px rgba(0,0,0,.25)}
+.mega .wrap{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:36px;padding-block:32px 36px;height:auto}
+.mega h5{margin:0 0 14px}
+.mprods{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.mp{display:grid;gap:8px;padding:12px;border-radius:10px;transition:background .15s}
+.mp:hover{background:var(--paper2)}
+.mp .sw{aspect-ratio:1/1;border-radius:8px;position:relative;overflow:hidden}
+.mp .sw img{position:absolute;left:50%;top:50%;translate:-50% -50%;height:80%;width:auto;filter:drop-shadow(0 10px 12px rgba(0,0,0,.25))}
+.mp b{font:400 16px/1 var(--f-d);text-transform:uppercase}
+.mp span{font-size:12.5px;color:var(--mute)}
+.mlist{display:grid;gap:4px}
+.mlist a{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid var(--line);font:400 22px/1 var(--f-d);text-transform:uppercase}
+.mlist a span{font:500 11px/1 var(--f-m);color:var(--mute)}
+.mlist a:hover{color:var(--signal)}
+.mcard{border-radius:12px;overflow:hidden;position:relative;min-height:280px;display:flex;align-items:flex-end}
+.mcard .ref{position:absolute;inset:0}
+.mcard .tx{position:relative;z-index:3;padding:20px;color:#fff;background:linear-gradient(transparent,rgba(0,0,0,.7));width:100%}
+.mcard .tx b{font:400 34px/.9 var(--f-d);text-transform:uppercase;display:block;margin-bottom:10px}
+.drawer{position:fixed;inset:0;z-index:100;display:flex}
+.drawer .scrim{position:absolute;inset:0;background:rgba(0,0,0,.5)}
+.drawer .panel{position:relative;margin-left:auto;width:min(440px,100%);height:100%;background:var(--paper);display:flex;flex-direction:column;padding-top:env(safe-area-inset-top,0px);animation:slide .25s ease}
+.drawer.left .panel{margin-left:0;margin-right:auto;animation:slideL .25s ease}
+@keyframes slide{from{transform:translateX(100%)}}
+@keyframes slideL{from{transform:translateX(-100%)}}
+.panel-h{display:flex;justify-content:space-between;align-items:center;padding:18px 22px;border-bottom:2px solid var(--ink)}
+.panel-h h3{font-size:34px}
+.panel-b{flex:1;overflow-y:auto;padding:16px 22px}
+.panel-f{padding:18px 22px max(18px,env(safe-area-inset-bottom,0px));border-top:2px solid var(--ink);display:grid;gap:12px}
+.x{width:40px;height:40px;border-radius:50%;border:0;background:var(--cobalt);color:var(--paper);font-size:20px}
+.ci{display:grid;grid-template-columns:72px 1fr auto;gap:14px;align-items:center;padding:14px 0;border-bottom:1px solid var(--line)}
+.ci .th{height:84px;border-radius:8px;display:grid;place-items:center}
+.ci .th img{height:80%;width:auto}
+.ci b{font:400 18px/1 var(--f-d);text-transform:uppercase;display:block}
+.qty{display:inline-flex;align-items:center;border:2px solid var(--ink);border-radius:999px;margin-top:8px}
+.qty button{border:0;background:none;width:30px;height:28px;font-size:16px}
+.qty span{min-width:22px;text-align:center;font:600 13px/1 var(--f-b)}
+.ship-bar{background:var(--paper2);border-radius:8px;padding:12px 14px;font-size:13px}
+.ship-bar .bar{height:6px;border-radius:3px;background:#fff;margin-top:8px;overflow:hidden}
+.stk-note{margin:10px 0 0;font:500 11px/1.4 var(--f-m);letter-spacing:.06em;text-transform:uppercase;color:var(--signal)}
+.ship-bar .bar i{display:block;height:100%;background:var(--signal)}
+.mnav{display:grid}
+.mnav a{padding:16px 0;border-bottom:1px solid var(--line);font:400 30px/1 var(--f-d);text-transform:uppercase}
+.toast{position:fixed;top:calc(90px + env(safe-area-inset-top,0px));left:50%;transform:translateX(-50%);z-index:110;background:var(--note);color:var(--ink);font:400 18px/1 var(--f-d);text-transform:uppercase;padding:14px 20px;border-radius:999px;border:3px solid var(--ink);box-shadow:0 10px 24px rgba(0,0,0,.2)}
+
+/* ——— product card ——— */
+.grid{display:grid;gap:18px}
+.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.pc{display:flex;flex-direction:column;gap:12px;position:relative}
+.pc .media{position:relative;aspect-ratio:4/5;border-radius:14px;overflow:hidden;display:grid;place-items:center;isolation:isolate}
+.pc .media .pk{position:absolute!important;left:50%;top:47%;translate:-50% -50%;max-width:80%;object-fit:contain;height:72%;width:auto;filter:drop-shadow(0 22px 22px rgba(0,0,0,.35));transition:transform .35s cubic-bezier(.2,.8,.2,1);position:relative;z-index:2}
+.pc:hover .media .pk{transform:translateY(-8px) rotate(-3deg)}
+.pc .media .big{position:absolute;left:14px;right:14px;bottom:12px;font:400 clamp(30px,3.3vw,46px)/.86 var(--f-d);text-transform:uppercase;color:rgba(255,255,255,.16);z-index:1;pointer-events:none}
+.pc .media .alt{position:absolute;inset:0;z-index:3;opacity:0;transition:opacity .3s}
+.pc .media .alt .ref{position:absolute;inset:0}
+.pc:hover .media .alt{opacity:1}
+.pc .badge{position:absolute;top:12px;left:12px;z-index:4}
+.pc .badge .stk{font-size:13px;padding:7px 10px 6px;transform:rotate(-4deg)}
+.pc .wish{position:absolute;top:10px;right:10px;z-index:4;width:40px;height:40px;border-radius:50%;border:0;background:rgba(255,255,255,.92);display:grid;place-items:center}
+.pc .wish svg{width:18px;height:18px}
+.pc .wish[aria-pressed="true"] svg{fill:var(--signal);stroke:var(--signal)}
+.pc .row{display:flex;justify-content:space-between;gap:10px;align-items:baseline}
+.pc h3{font:400 24px/1 var(--f-d);text-transform:uppercase;margin:0}
+.pc .line{font-size:13.5px;color:var(--mute);margin-top:4px}
+.price{font:700 16px/1 var(--f-b);white-space:nowrap}
+.price s{font-weight:400;color:var(--mute);margin-left:6px;font-size:13px}
+.pc .add{width:100%;padding:13px;border-radius:999px;border:2px solid var(--ink);background:var(--paper);font:700 13px/1 var(--f-b);text-transform:uppercase;letter-spacing:.05em;transition:background .15s,color .15s}
+.pc .add:hover{background:var(--cobalt);color:var(--paper)}
+.ink .pc .add{background:transparent;border-color:var(--paper);color:var(--paper)}
+.ink .pc .add:hover{background:var(--paper);color:var(--ink)}
+.ink .pc .line,.ink .price s{color:rgba(241,240,236,.6)}
+.dots{display:flex;gap:6px}
+.dots i{width:14px;height:14px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 1px var(--line)}
+
+/* ——— home ——— */
+.hero{padding:0;position:relative;overflow:hidden;color:#fff;background:var(--ink)}
+.hc{position:relative;height:clamp(580px,84vh,860px)}
+.hs{position:absolute;inset:0;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:clamp(20px,3vw,48px);padding:36px var(--gr) 72px var(--gl);background:var(--bg);opacity:0;visibility:hidden;transition:opacity .6s ease,visibility 0s linear .6s}
+.hs.on{opacity:1;visibility:visible;transition:opacity .6s ease}
+.hs .pic{grid-column:2;height:100%;max-height:100%;aspect-ratio:var(--ar);border-radius:20px;overflow:hidden;box-shadow:0 30px 70px rgba(0,0,0,.35);position:relative;transform:scale(.97);transition:transform 1.2s cubic-bezier(.2,.8,.2,1)}
+.hs.on .pic{transform:none}
+.hs .pic .ref{position:absolute;inset:0;background:none}
+.hs .pic .ref img{object-fit:cover;object-position:center}
+.hs .ttl{grid-column:1;justify-self:end;text-align:right;font:400 clamp(64px,8.4vw,150px)/.84 var(--f-d);text-transform:uppercase;margin:0;color:var(--fg)}
+.hs .ttl em{font-style:normal;color:var(--ac);display:block}
+.hs .side{grid-column:3;justify-self:start;display:grid;gap:18px;max-width:300px}
+.hs .side .m{color:var(--fg);opacity:.8}
+.hs .side p{margin:0;font:400 26px/1 var(--f-d);text-transform:uppercase;color:var(--fg)}
+.hs .stk{position:absolute;z-index:3}
+.hnav{position:absolute;z-index:5;left:0;right:0;bottom:22px;display:flex;justify-content:center;align-items:center;gap:12px}
+.hdots{display:flex;gap:8px}
+.hdots button{width:34px;height:6px;border-radius:3px;border:0;background:rgba(255,255,255,.4);padding:0;position:relative;overflow:hidden}
+.hdots button[aria-current="true"]{background:rgba(255,255,255,.4)}
+.hdots button[aria-current="true"]::after{content:"";position:absolute;inset:0;background:#fff;transform-origin:left;animation:hfill 5.5s linear forwards}
+.hero.paused .hdots button[aria-current="true"]::after{animation-play-state:paused}
+@keyframes hfill{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.harr{width:44px;height:44px;border-radius:50%;border:2px solid #fff;background:rgba(19,19,19,.25);color:#fff;font:400 20px/1 var(--f-d)}
+.harr:hover{background:#fff;color:var(--ink)}
+@media (max-width:900px){
+ .hc{height:auto;min-height:0}
+ .hs{position:relative;display:none;grid-template-columns:1fr;grid-template-rows:auto auto auto;gap:18px;padding:22px var(--gr) 86px var(--gl);opacity:1;visibility:visible}
+ .hs.on{display:grid}
+ .hs .pic{grid-column:1;grid-row:2;height:auto;width:min(100%,420px);justify-self:center}
+ .hs .ttl{grid-column:1;grid-row:1;justify-self:start;text-align:left;font-size:clamp(56px,15vw,96px)}
+ .hs .ttl em{display:inline}
+ .hs .side{grid-column:1;grid-row:3;max-width:none;grid-template-columns:1fr auto;align-items:center}
+ .hs .side .m{display:none}
+}
+@media (prefers-reduced-motion:reduce){.hdots button[aria-current="true"]::after{animation:none;transform:none}}
+.ticker{background:var(--note);color:var(--ink);overflow:hidden;white-space:nowrap;border-block:3px solid var(--ink)}
+.ticker .track{display:inline-flex;gap:40px;padding:16px 0;animation:mq 30s linear infinite;font:400 34px/1 var(--f-d);text-transform:uppercase}
+.ticker .track span{display:inline-flex;gap:40px;align-items:center}
+.ticker .track span::after{content:"";width:18px;height:18px;border-radius:50%;background:var(--signal)}
+.problems{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}
+.prob{border-radius:16px;overflow:hidden;position:relative;aspect-ratio:3/4.4;display:flex;flex-direction:column;justify-content:space-between;padding:18px;color:#fff;isolation:isolate;transition:transform .25s}
+.prob:hover{transform:translateY(-6px)}
+.prob .q{font:400 clamp(34px,3.4vw,52px)/.86 var(--f-d);text-transform:uppercase;position:relative;z-index:2}
+.prob .pk{position:absolute;right:-6%;bottom:6%;height:56%;width:auto;z-index:1;filter:drop-shadow(0 18px 18px rgba(0,0,0,.4));transform:rotate(8deg);transition:transform .3s}
+.prob:hover .pk{transform:rotate(0deg) scale(1.04)}
+.prob .ft{position:relative;z-index:2;display:grid;gap:4px}
+.prob .ft span{font-size:13px;opacity:.85;max-width:16ch}
+.prob .ft b{font:500 11px/1 var(--f-m);letter-spacing:.1em;text-transform:uppercase}
+.unsay{position:relative;overflow:hidden;background:#fff;color:var(--ink);text-align:center;border-block:2px solid var(--ink)}
+.unsay .lines{display:grid;gap:6px;justify-items:center}
+.unsay .ln{display:flex;align-items:center;justify-content:center;gap:clamp(10px,1.6vw,22px);font:400 clamp(52px,9.4vw,146px)/.88 var(--f-d);text-transform:uppercase;white-space:nowrap}
+.unsay .ln.r{color:var(--signal)}
+.unsay .ln.o{color:transparent;-webkit-text-stroke:2px var(--ink)}
+.uimg{flex:none;padding:0;border:0;background:none;cursor:zoom-in;width:clamp(78px,11vw,170px);aspect-ratio:1/1;border-radius:999px;overflow:hidden;position:relative;box-shadow:0 0 0 3px var(--ink);transition:width .45s cubic-bezier(.2,.8,.2,1),border-radius .45s cubic-bezier(.2,.8,.2,1),box-shadow .3s;-webkit-text-stroke:0}
+.uimg .ref{position:absolute;inset:0}
+.uimg .ref .rt{opacity:0;transition:opacity .2s}
+.uimg:hover,.uimg:focus-visible,.uimg[aria-expanded="true"]{width:clamp(150px,24vw,360px);border-radius:20px;box-shadow:0 0 0 3px var(--ink),8px 8px 0 var(--ink)}
+.uimg[aria-expanded="true"]{cursor:zoom-out}
+.uimg:hover .ref .rt,.uimg[aria-expanded="true"] .ref .rt{opacity:1}
+.unsay .hint{margin:22px 0 0;color:var(--mute)}
+.unsay .ufoot{display:grid;justify-items:center;gap:20px;margin-top:28px}
+.unsay .ufoot p{margin:0;max-width:52ch;font-size:17px}
+@media (max-width:700px){.unsay .ln{font-size:clamp(40px,11vw,64px)}.uimg{width:64px}.uimg:hover,.uimg:focus-visible,.uimg[aria-expanded="true"]{width:min(46vw,200px)}}
+@media (hover:none){.uimg:hover:not([aria-expanded="true"]){width:clamp(64px,11vw,170px);border-radius:999px;box-shadow:0 0 0 3px var(--ink)}}
+.diptych{display:grid;grid-template-columns:1fr 1fr;gap:0;border-radius:18px;overflow:hidden;position:relative}
+.diptych .ref{aspect-ratio:4/5}
+.diptych .lab{position:absolute;bottom:18px;z-index:3;font:400 clamp(40px,6vw,88px)/.85 var(--f-d);color:#fff;text-transform:uppercase;text-shadow:0 4px 24px rgba(0,0,0,.35)}
+.diptych .lab small{display:block;font:500 12px/1 var(--f-m);letter-spacing:.12em;margin-bottom:8px}
+.diptych .stamp{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) rotate(-10deg);z-index:4;background:var(--signal);color:#fff;font:400 clamp(30px,4vw,56px)/.9 var(--f-d);padding:18px 26px;border-radius:12px;border:4px solid #fff;text-align:center;text-transform:uppercase}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.ticks{display:grid;gap:0;margin-top:24px}
+.ticks div{display:grid;grid-template-columns:54px 1fr;gap:12px;padding:16px 0;border-top:2px solid var(--ink)}
+.ticks div b{font:400 34px/1 var(--f-d);color:var(--signal)}
+.ticks div p{margin:0}
+.ticks div p strong{display:block;font:400 22px/1.05 var(--f-d);text-transform:uppercase;margin-bottom:4px}
+.kit{border-radius:16px;overflow:hidden;display:flex;flex-direction:column;border:2px solid var(--ink);background:var(--paper)}
+.kit .km{aspect-ratio:5/4;position:relative}
+.kit .km img{position:absolute;left:50%;top:50%;translate:-50% -50%;height:80%;width:auto;max-width:86%;object-fit:contain;filter:drop-shadow(0 20px 20px rgba(0,0,0,.3))}
+.kit .km .stk{position:absolute;top:14px;right:14px;transform:rotate(6deg)}
+.kit .kb{padding:18px;display:grid;gap:10px;border-top:2px solid var(--ink)}
+.kit h3{font:400 30px/1 var(--f-d);text-transform:uppercase;margin:0}
+.kit .row{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.crew{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));grid-auto-rows:220px;gap:10px}
+.crew .ref{border-radius:12px}
+.crew .ref:nth-child(1){grid-column:span 2;grid-row:span 2}
+.crew .ref:nth-child(4){grid-row:span 2}
+.crew .ref:nth-child(6){grid-column:span 2}
+.crew .h{position:absolute;bottom:10px;left:10px;z-index:3;color:#fff;font:600 12px/1 var(--f-b);text-shadow:0 1px 6px rgba(0,0,0,.6)}
+.revs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.rv{background:var(--paper);color:var(--ink);border-radius:14px;padding:22px;display:grid;gap:10px;align-content:start;border:2px solid var(--ink)}
+.rv .stars{color:var(--signal);letter-spacing:2px;font-size:15px}
+.rv b{font:400 24px/1 var(--f-d);text-transform:uppercase}
+.rv p{margin:0;font-size:14.5px}
+.rv .who{display:flex;justify-content:space-between;gap:8px;font:500 11px/1.3 var(--f-m);letter-spacing:.06em;text-transform:uppercase;color:var(--mute);border-top:1px solid var(--line);padding-top:10px}
+.news{background:var(--cobalt);color:#fff;border-radius:20px;padding:44px;display:grid;grid-template-columns:1.2fr 1fr;gap:30px;align-items:center;position:relative;overflow:hidden}
+.news h2{font-size:clamp(44px,5.6vw,84px)}
+.news form{display:flex;gap:8px;background:#fff;border-radius:999px;padding:6px}
+.news input{flex:1;min-width:0;border:0;background:none;padding:0 16px;font:500 15px var(--f-b);color:var(--ink);outline:none}
+.foot{background:var(--ink);color:var(--paper);padding-block:64px max(110px,calc(90px + env(safe-area-inset-bottom,0px)))}
+.foot .cols{display:grid;grid-template-columns:1.4fr repeat(3,minmax(0,1fr));gap:30px}
+.foot h6{margin:0 0 14px}
+.foot ul{list-style:none;margin:0;padding:0;display:grid;gap:10px;font-size:14px;color:rgba(241,240,236,.7)}
+.foot ul a:hover{color:#fff}
+.foot .word{font:400 clamp(110px,22vw,340px)/.8 var(--f-h);color:var(--signal);margin:48px 0 18px;letter-spacing:-.02em}
+.foot .word2{font:400 clamp(72px,12vw,200px)/.84 var(--f-d);text-transform:uppercase;color:var(--paper);margin:56px 0 24px}
+.foot .word2 span{color:var(--signal)}
+.foot .legal{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:12px;color:rgba(241,240,236,.5)}
+
+
+/* ——— UGC 9:16 ——— */
+.ugc-nav{display:flex;gap:8px}
+.ugc-arrow{width:52px;height:52px;border-radius:50%;border:2px solid var(--paper);background:transparent;color:var(--paper);font:400 22px/1 var(--f-d)}
+.ugc-arrow:hover{background:var(--paper);color:var(--ink)}
+.ugc-row{display:grid;grid-auto-flow:column;grid-auto-columns:clamp(220px,19vw,268px);gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:10px;scrollbar-width:none}
+.ugc-row::-webkit-scrollbar{display:none}
+.ugc-card{position:relative;aspect-ratio:9/16;border-radius:16px;overflow:hidden;background:var(--ink);scroll-snap-align:start;isolation:isolate}
+.ugc-card video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.ugc-card::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(0,0,0,.45) 0%,rgba(0,0,0,0) 22%,rgba(0,0,0,0) 50%,rgba(0,0,0,.78) 100%);pointer-events:none}
+.ugc-top{position:absolute;top:10px;left:10px;right:10px;z-index:2;display:flex;justify-content:space-between;gap:6px;align-items:center}
+.ugc-top .who{display:flex;gap:6px;align-items:center;font:600 12px/1 var(--f-b);color:#fff;min-width:0;white-space:nowrap;overflow:hidden}
+.ugc-top .who i{width:22px;height:22px;border-radius:50%;border:2px solid #fff;flex:none}
+.ugc-top .rt{font:500 9px/1 var(--f-m);letter-spacing:.06em;text-transform:uppercase;background:rgba(19,19,19,.7);color:#fff;padding:5px 6px;border-radius:4px;white-space:nowrap}
+.ugc-top .rt a{color:var(--note);text-decoration:underline}
+body.clean .ugc-top .rt{display:none}
+.ugc-snd{position:absolute;z-index:3;top:42px;right:10px;width:34px;height:34px;border-radius:50%;border:0;background:rgba(19,19,19,.6);color:#fff;display:grid;place-items:center}
+.ugc-snd svg{width:18px;height:18px}
+.ugc-snd[aria-pressed="true"] .w{display:none}
+.ugc-card .hook{position:absolute;z-index:2;left:12px;right:12px;bottom:80px;margin:0;font:400 26px/.95 var(--f-d);text-transform:uppercase;color:#fff;text-wrap:balance}
+.ugc-shot{position:absolute;z-index:4;left:10px;right:10px;bottom:80px;background:var(--note);color:var(--ink);border-radius:10px;padding:10px 12px;font-size:12.5px;line-height:1.35;display:none}
+.ugc-shot b{display:block;font:500 10px/1 var(--f-m);letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px}
+body.notes .ugc-shot{display:block}
+body.notes .ugc-card .hook{opacity:0}
+.ugc-prod{position:absolute;z-index:3;left:10px;right:10px;bottom:10px;display:flex;align-items:center;gap:10px;background:var(--paper);color:var(--ink);border-radius:12px;padding:8px}
+.ugc-prod .th{width:40px;height:50px;border-radius:7px;position:relative;flex:none}
+.ugc-prod .th img{position:absolute;left:50%;top:50%;translate:-50% -50%;height:86%;width:auto}
+.ugc-prod .nm{flex:1;min-width:0;display:grid;gap:2px}
+.ugc-prod .nm b{font:400 15px/1 var(--f-d);text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ugc-prod .nm span{font-size:12px;font-weight:600}
+.ugc-prod .go{background:var(--signal);color:#fff;font:700 11px/1 var(--f-b);text-transform:uppercase;padding:9px 10px;border-radius:999px}
+@media (max-width:560px){.ugc-row{grid-auto-columns:62vw}}
+
+
+/* commute routine picker */
+.route{background:var(--paper2)}
+.rt-wrap{display:grid;grid-template-columns:300px minmax(0,1fr);gap:18px;align-items:start}
+.rt-tabs{display:grid;gap:8px}
+.rt-tabs button{display:grid;gap:4px;text-align:left;padding:18px 20px;border-radius:14px;border:2px solid var(--ink);background:var(--paper);transition:transform .15s}
+.rt-tabs button b{font:400 28px/1 var(--f-d);text-transform:uppercase}
+.rt-tabs button span{font:500 11px/1 var(--f-m);letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
+.rt-tabs button[aria-selected="true"]{background:var(--cobalt);color:var(--paper);box-shadow:6px 6px 0 var(--signal)}
+.rt-tabs button[aria-selected="true"] span{color:var(--note)}
+.rt-card{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);border:2px solid var(--ink);border-radius:18px;overflow:hidden;background:var(--white);min-height:460px}
+.rt-card .rt-img{min-height:360px}
+.rt-body{padding:28px;display:flex;flex-direction:column;gap:18px}
+.rt-steps{list-style:none;margin:0;padding:0;display:grid;gap:0}
+.rt-steps li{display:grid;grid-template-columns:76px 56px 1fr;gap:14px;align-items:center;padding:14px 0;border-top:1px solid var(--line)}
+.rt-steps time{font:400 30px/1 var(--f-d);color:var(--signal)}
+.rt-th{width:56px;height:64px;border-radius:10px;position:relative}
+.rt-th img{position:absolute;left:50%;top:50%;translate:-50% -50%;height:84%;width:auto}
+.rt-steps b{display:block;font:400 20px/1 var(--f-d);text-transform:uppercase;margin-bottom:3px}
+.rt-steps em{font-style:normal;color:var(--mute)}
+.rt-foot{margin-top:auto;display:flex;align-items:center;gap:16px;flex-wrap:wrap;border-top:2px solid var(--ink);padding-top:18px}
+.rt-tot{font:400 40px/1 var(--f-d)}
+@media (max-width:900px){.rt-wrap{grid-template-columns:1fr}.rt-tabs{grid-template-columns:repeat(2,minmax(0,1fr))}.rt-card{grid-template-columns:1fr}.rt-card .rt-img{min-height:260px}}
+@media (max-width:560px){.rt-tabs button b{font-size:22px}.rt-steps li{grid-template-columns:60px 48px 1fr}.rt-body{padding:20px}}
+
+/* ——— collection ——— */
+.crumb{display:flex;gap:8px;align-items:center;font:500 11px/1 var(--f-m);letter-spacing:.08em;text-transform:uppercase;color:var(--mute);padding-block:18px}
+.crumb a:hover{color:var(--ink)}
+.chead{background:var(--ink);color:var(--paper);padding-block:56px 0;overflow:hidden}
+.chead .top{display:grid;grid-template-columns:1.7fr 1fr;gap:36px;align-items:end}
+.chead h1{font-size:clamp(72px,10.5vw,176px);line-height:.82}
+.chead h1 sup{font:500 14px/1 var(--f-m);vertical-align:top;margin-left:8px;color:var(--note);letter-spacing:.08em}
+.chead .lede{font-size:18px;color:rgba(241,240,236,.72);max-width:46ch}
+.cstrip{display:grid;grid-template-columns:1.3fr 1fr 1fr .8fr;gap:10px;margin-top:40px;height:300px}
+.cstrip .ref{border-radius:14px 14px 0 0}
+.ctabs{position:sticky;top:calc(72px + env(safe-area-inset-top,0px));z-index:40;background:var(--paper);border-bottom:2px solid var(--ink)}
+.ctabs .wrap{display:flex;gap:16px;align-items:center;justify-content:space-between;padding-block:12px;flex-wrap:wrap}
+.tabs{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;min-width:0}
+.tabs::-webkit-scrollbar{display:none}
+.tabs a,.chips button{white-space:nowrap;padding:10px 16px;border-radius:999px;border:2px solid var(--ink);background:transparent;font:400 16px/1 var(--f-d);text-transform:uppercase;letter-spacing:.04em}
+.tabs a.on,.chips button[aria-pressed="true"]{background:var(--cobalt);color:var(--paper)}
+.tools{display:flex;gap:10px;align-items:center}
+.tools select{appearance:none;border:2px solid var(--ink);border-radius:999px;padding:10px 36px 10px 16px;background:var(--paper) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23131313' stroke-width='2' fill='none'/%3E%3C/svg%3E") no-repeat right 14px center;font:600 13px/1 var(--f-b);color:var(--ink)}
+.count{font:500 12px/1 var(--f-m);letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:26px}
+.chips button{font-size:14px;padding:8px 13px}
+.edit{border-radius:14px;overflow:hidden;position:relative;grid-row:span 1;display:flex;align-items:flex-end;min-height:100%}
+.edit .ref{position:absolute;inset:0}
+.edit .tx{position:relative;z-index:3;padding:20px;color:#fff;background:linear-gradient(transparent,rgba(0,0,0,.78));width:100%;display:grid;gap:12px}
+.edit .tx b{font:400 40px/.86 var(--f-d);text-transform:uppercase}
+.moments{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.mo{border-radius:14px;overflow:hidden;position:relative;aspect-ratio:3/4;display:flex;align-items:flex-end;color:#fff}
+.mo .ref{position:absolute;inset:0}
+.mo .tx{position:relative;z-index:3;padding:18px;background:linear-gradient(transparent,rgba(0,0,0,.8));width:100%}
+.mo time{font:400 46px/1 var(--f-d);color:var(--note)}
+.mo b{display:block;font:400 22px/1 var(--f-d);text-transform:uppercase;margin:4px 0}
+.mo span{font-size:13px;opacity:.85}
+.cmp{overflow-x:auto;border:2px solid var(--ink);border-radius:14px;background:var(--white)}
+.cmp table{border-collapse:collapse;width:100%;min-width:760px}
+.cmp th,.cmp td{padding:14px 16px;text-align:center;border-bottom:1px solid var(--line)}
+.cmp th{font:400 18px/1 var(--f-d);text-transform:uppercase;vertical-align:bottom}
+.cmp th img{height:70px;width:auto;margin:0 auto 10px}
+.cmp td:first-child,.cmp th:first-child{text-align:left;font:500 12px/1.2 var(--f-m);letter-spacing:.08em;text-transform:uppercase}
+.cmp td .y{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--signal);color:#fff;font-weight:700}
+.cmp td .n{color:#c9c7c1}
+.cmp tr:last-child td{border-bottom:0}
+
+/* ——— PDP ——— */
+.pdp{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:48px;align-items:start;padding-bottom:72px}
+.gal{display:grid;grid-template-columns:84px 1fr;gap:12px;position:sticky;top:calc(88px + env(safe-area-inset-top,0px))}
+.thumbs{display:grid;gap:8px;align-content:start;max-height:680px;overflow-y:auto;scrollbar-width:none}
+.thumbs button{border:0;padding:0;border-radius:8px;overflow:hidden;aspect-ratio:4/5;opacity:.55;outline:2px solid transparent;outline-offset:2px;transition:opacity .15s;position:relative;display:grid;place-items:center}
+.thumbs button[aria-pressed="true"]{opacity:1;outline-color:var(--ink)}
+.thumbs button img{width:100%;height:100%;object-fit:cover}
+.thumbs button img.pkt{position:absolute;left:50%;top:50%;translate:-50% -50%;width:auto;height:80%;object-fit:contain}
+.thumbs button .n{position:absolute;bottom:4px;right:4px;font:500 9px/1 var(--f-m);background:var(--cobalt);color:#fff;padding:3px 4px;border-radius:3px}
+.gmain{position:relative;aspect-ratio:4/5;border-radius:18px;overflow:hidden;display:grid;place-items:center}
+.gmain > .pk{position:absolute!important;left:50%;top:48%;translate:-50% -50%;height:70%;width:auto;max-width:80%;object-fit:contain;filter:drop-shadow(0 30px 30px rgba(0,0,0,.4));position:relative;z-index:2}
+.gmain .ref{position:absolute;inset:0}
+.gmain .bigtx{position:absolute;left:22px;right:22px;bottom:18px;font:400 clamp(54px,6vw,92px)/.84 var(--f-d);text-transform:uppercase;color:rgba(255,255,255,.14);z-index:1}
+.gmain .stk{position:absolute;z-index:3}
+.gcap{grid-column:2;display:flex;justify-content:space-between;gap:10px;font:500 11px/1.3 var(--f-m);letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
+.buy{display:grid;gap:18px}
+.buy .eb{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.buy h1{font-size:clamp(52px,5.6vw,86px);line-height:.86}
+.buy .bold{font:400 30px/1 var(--f-d);color:var(--signal);text-transform:uppercase}
+.buy .sub{font-size:16.5px;margin:0;max-width:52ch}
+.rating{display:flex;gap:10px;align-items:center;font-size:13.5px}
+.rating .stars{color:var(--signal);letter-spacing:2px}
+.pr{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.pr .p{font:400 48px/1 var(--f-d)}
+.pr s{color:var(--mute);font-size:17px}
+.pr .off{background:var(--signal);color:#fff;font:700 12px/1 var(--f-b);padding:6px 9px;border-radius:999px;text-transform:uppercase}
+.tax{font-size:12.5px;color:var(--mute);margin-top:-10px}
+.benefits{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.benefits span{display:flex;align-items:center;gap:10px;padding:12px 14px;border-radius:12px;background:var(--tc);border:2px solid var(--ink);box-shadow:3px 3px 0 var(--ink);font:400 19px/1.05 var(--f-d);text-transform:uppercase;letter-spacing:.02em;color:var(--ink)}
+.benefits i{font-style:normal;flex:none;width:24px;height:24px;border-radius:50%;background:var(--cobalt);color:var(--tc);display:grid;place-items:center;font:700 13px/1 var(--f-b)}
+.tags{display:flex;gap:6px;flex-wrap:wrap}
+.tags span{font:500 11px/1 var(--f-m);letter-spacing:.06em;text-transform:uppercase;padding:8px 10px;border-radius:999px;background:var(--white);border:1.5px solid var(--ink)}
+.opt{display:grid;gap:10px}
+.vars{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.var{display:flex;gap:12px;align-items:center;padding:10px;border-radius:12px;border:2px solid var(--line);background:var(--white);text-align:left}
+.var[aria-pressed="true"]{border-color:var(--ink);box-shadow:4px 4px 0 var(--ink)}
+.var .sw{width:52px;height:60px;border-radius:8px;display:grid;place-items:center;flex:none}
+.var .sw img{height:90%;width:auto}
+.var b{font:400 18px/1 var(--f-d);text-transform:uppercase;display:block}
+.var span span{font-size:12.5px;color:var(--mute)}
+.stock{display:flex;gap:8px;align-items:center;font-size:13.5px;font-weight:600}
+.stock i{width:10px;height:10px;border-radius:50%;background:#2E9E5B;box-shadow:0 0 0 4px rgba(46,158,91,.18)}
+.stock.out i{background:var(--mute);box-shadow:none}
+.coupon{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:14px 16px;border-radius:12px;border:2px dashed var(--ink);background:var(--note)}
+.coupon b{font:400 20px/1 var(--f-d);text-transform:uppercase}
+.coupon code{font:500 13px/1 var(--f-m);background:var(--cobalt);color:var(--note);padding:8px 10px;border-radius:6px}
+.buyrow{display:grid;grid-template-columns:1fr auto auto;gap:10px}
+.buyrow .btn{padding-block:20px}
+.wishbig{width:58px;height:58px;border-radius:50%;border:2px solid var(--ink);background:var(--white);display:grid;place-items:center}
+.wishbig svg{width:22px;height:22px}
+.wishbig[aria-pressed="true"] svg{fill:var(--signal);stroke:var(--signal)}
+.notify{display:flex;gap:8px}
+.notify input{flex:1;min-width:0;border:2px solid var(--ink);border-radius:999px;padding:0 18px;font:500 15px var(--f-b);background:var(--white)}
+.perks{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--cobalt);border:2px solid var(--ink);border-radius:12px;overflow:hidden}
+.perks div{background:var(--paper);padding:12px 10px;display:grid;gap:6px;justify-items:center;text-align:center;font:500 10.5px/1.25 var(--f-m);letter-spacing:.04em;text-transform:uppercase}
+.perks svg{width:22px;height:22px}
+.gperks{grid-column:2;margin-top:4px}
+@media (max-width:860px){.gperks{grid-column:1}}
+.acc details{border-top:2px solid var(--ink)}
+.acc details:last-child{border-bottom:2px solid var(--ink)}
+.acc summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;padding:16px 0;font:400 20px/1 var(--f-d);text-transform:uppercase}
+.acc summary::-webkit-details-marker{display:none}
+.acc summary::after{content:"+";font:400 26px/1 var(--f-d);transition:transform .2s}
+.acc details[open] summary::after{transform:rotate(45deg)}
+.acc .ans{padding:0 0 18px;font-size:14.5px}
+.jobs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.job{border-radius:16px;padding:22px;display:grid;gap:12px;align-content:start;min-height:250px;position:relative;overflow:hidden}
+.job .n{font:400 72px/.8 var(--f-d)}
+.job b{font:400 26px/1 var(--f-d);text-transform:uppercase}
+.job span{font-size:14px}
+.wide{display:grid;grid-template-columns:1.2fr 1fr;gap:0;border-radius:20px;overflow:hidden;min-height:520px}
+.wide .ref{min-height:420px}
+.wide .tx{padding:48px;display:flex;flex-direction:column;justify-content:center;gap:18px}
+.wide .tx h3{font-size:clamp(44px,4.6vw,72px)}
+.wide .tx p{font-size:17px;margin:0}
+.ings{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.ing{border:2px solid var(--paper);border-radius:14px;padding:20px;display:grid;gap:8px;align-content:start}
+.ing .role{font:500 11px/1 var(--f-m);letter-spacing:.1em;text-transform:uppercase;color:var(--note)}
+.ing b{font:400 28px/1 var(--f-d);text-transform:uppercase}
+.ing p{margin:0;font-size:14px;color:rgba(241,240,236,.72)}
+.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;counter-reset:s}
+.step{border-radius:16px;overflow:hidden;background:var(--white);border:2px solid var(--ink);display:flex;flex-direction:column}
+.step .ref{aspect-ratio:4/3}
+.step .sb{padding:18px;display:grid;gap:6px}
+.step .sb b{font:400 26px/1 var(--f-d);text-transform:uppercase;display:flex;gap:10px;align-items:baseline}
+.step .sb b i{font-style:normal;color:var(--signal)}
+.fbt{display:grid;grid-template-columns:repeat(3,minmax(0,1fr)) minmax(240px,.9fr);gap:12px;align-items:stretch}
+.fb{display:grid;gap:10px;justify-items:center;text-align:center;padding:18px;border-radius:14px;border:2px solid var(--ink);background:var(--white);position:relative;cursor:pointer}
+.fb input{position:absolute;top:12px;left:12px;width:20px;height:20px;accent-color:var(--signal)}
+.fb .sw{width:100%;aspect-ratio:1/1;border-radius:10px;position:relative}
+.fb .sw img{position:absolute;left:50%;top:50%;translate:-50% -50%;height:78%;width:auto}
+.fb b{font:400 18px/1 var(--f-d);text-transform:uppercase}
+.fbsum{background:var(--ink);color:var(--paper);border-radius:14px;padding:22px;display:flex;flex-direction:column;justify-content:space-between;gap:16px}
+.fbsum .t{font:400 44px/1 var(--f-d)}
+.faq{display:grid;grid-template-columns:1fr 1.5fr;gap:48px}
+.satc{position:fixed;left:0;right:0;bottom:0;z-index:70;background:var(--paper);border-top:2px solid var(--ink);box-shadow:0 -10px 30px rgba(0,0,0,.12);transform:translateY(110%);transition:transform .3s;padding-bottom:env(safe-area-inset-bottom,0px)}
+.satc.show{transform:none}
+.satc .wrap{display:flex;align-items:center;gap:12px;padding-block:12px}
+.satc .btn{padding:16px 22px;white-space:nowrap}
+.satc s{color:var(--mute)}
+.wishbig.sm{width:50px;height:50px;flex:none}
+.buyhint{margin:0;font:500 11px/1.4 var(--f-m);letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
+body.pdp-on .foot{padding-bottom:calc(180px + env(safe-area-inset-bottom,0px))}
+@media (max-width:640px){.satc .sp,.satc .wishbig.sm{display:none}.satc .th{width:40px;height:48px}.satc .btn{flex:1;padding:15px 10px;font-size:12px}}
+
+.satc .th{width:46px;height:54px;border-radius:8px;display:grid;place-items:center;flex:none}
+.satc .th img{height:86%;width:auto}
+.satc b{font:400 20px/1 var(--f-d);text-transform:uppercase}
+.satc .sp{flex:1;min-width:0}
+body.pdp-on .pbar{bottom:calc(92px + env(safe-area-inset-bottom,0px))}
+
+
+/* buybox: uses + hero ingredients */
+.bx{display:grid;gap:10px;padding-top:4px}
+.bx-h{color:var(--mute)}
+.uses{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.use{display:grid;justify-items:center;text-align:center;gap:6px;padding:14px 8px;border-radius:12px;background:var(--white);border:2px solid var(--ink)}
+.use .ui{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;color:#fff}
+.use .ui svg{width:24px;height:24px}
+.use b{font:400 16px/1 var(--f-d);text-transform:uppercase}
+.use span{font-size:12px;color:var(--mute)}
+.hing{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.hi{display:grid;justify-items:center;text-align:center;gap:6px}
+.hi img{width:82px;height:82px;border-radius:50%;border:2px solid var(--ink);background:#fff;object-fit:cover}
+.hi b{font:400 16px/1 var(--f-d);text-transform:uppercase}
+.hi span{font:500 10.5px/1 var(--f-m);letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
+.bx-link{font:600 12.5px/1 var(--f-b);text-decoration:underline;justify-self:start;color:var(--ink)}
+/* clinical info sheet */
+.clin{background:#fff;color:#1d1f22;border-top:1px solid #d9dadc;border-bottom:1px solid #d9dadc;padding-block:56px}
+.clin-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;padding-bottom:20px;border-bottom:2px solid #1d1f22}
+.clin-k{font:500 11px/1 var(--f-m);letter-spacing:.14em;text-transform:uppercase;color:#5d6066}
+.clin h2{margin:8px 0 0;font:600 26px/1.15 var(--f-b);letter-spacing:-.01em}
+.clin-meta{display:flex;gap:28px;flex-wrap:wrap}
+.clin-meta span{display:grid;gap:4px;font:500 10.5px/1 var(--f-m);letter-spacing:.1em;text-transform:uppercase;color:#5d6066}
+.clin-meta b{font:500 13.5px/1.2 var(--f-b);letter-spacing:0;text-transform:none;color:#1d1f22}
+.clin-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-left:1px solid #d9dadc}
+.clin-col{padding:24px 24px 8px;border-right:1px solid #d9dadc;min-width:0}
+.clin-col h3{display:flex;gap:10px;align-items:baseline;margin:0 0 16px;font:600 14px/1.2 var(--f-b);text-transform:uppercase;letter-spacing:.06em}
+.clin-col h3 span{font:500 11px/1 var(--f-m);color:var(--cobalt)}
+.clin ol{margin:0;padding:0;list-style:none;counter-reset:c;display:grid;gap:12px}
+.clin ol li{counter-increment:c;display:grid;grid-template-columns:28px 1fr;gap:2px 10px;font-size:14px;line-height:1.5}
+.clin ol li::before{content:counter(c);grid-row:span 2;width:24px;height:24px;border:1px solid #1d1f22;border-radius:50%;display:grid;place-items:center;font:500 11px/1 var(--f-m)}
+.clin ol li b{font-weight:600}
+.clin table{width:100%;border-collapse:collapse;font-size:13.5px}
+.clin th{text-align:left;font:500 10.5px/1 var(--f-m);letter-spacing:.1em;text-transform:uppercase;color:#5d6066;padding:0 0 8px;border-bottom:1px solid #1d1f22}
+.clin td{padding:10px 8px 10px 0;border-bottom:1px solid #e6e7e9;vertical-align:top}
+.clin td:first-child{font-weight:600;width:42%}
+.clin td small{display:block;color:#5d6066;font-size:12.5px;margin-top:2px}
+.clin .warn p{margin:0 0 12px;font-size:14px;line-height:1.5;padding:12px 14px;background:#fff6f4;border-left:3px solid var(--signal)}
+.clin .warn ul{margin:0;padding-left:18px;font-size:13.5px;line-height:1.6;color:#3b3e43}
+@media (max-width:860px){.clin-grid{grid-template-columns:1fr;border-left:0}.clin-col{border-right:0;border-bottom:1px solid #d9dadc;padding-inline:0}}
+@media (max-width:560px){.use b,.hi b{font-size:14px}.hi img{width:68px;height:68px}}
+
+/* ——— compact cards (v2) ——— */
+/* product cards */
+.pc .media{aspect-ratio:1/1.02}
+.pc .media .pk{height:66%}
+.pc h3{font-size:28px}
+.pc .add{padding:11px}
+/* kit cards */
+.kit .km{aspect-ratio:16/10}
+.kit h3{font-size:34px}
+.kit .kb{padding:16px;gap:8px}
+/* problem tiles */
+.prob{aspect-ratio:3/3.5;padding:16px}
+.prob .q{font-size:clamp(38px,3.9vw,60px)}
+.prob .pk{height:48%}
+/* four jobs */
+.job{min-height:0;padding:18px 20px;gap:8px}
+.job .n{font:500 12px/1 var(--f-m);letter-spacing:.1em;opacity:.75}
+.job b{font-size:34px;line-height:.95}
+.job span{font-size:13.5px}
+/* benefit cards */
+.benefits{gap:6px}
+.benefits span{padding:9px 12px;font-size:21px;box-shadow:2px 2px 0 var(--ink);border-width:1.5px}
+.benefits i{width:20px;height:20px;font-size:11px}
+/* made for + hero ingredients */
+.use{padding:10px 8px;gap:4px}
+.use .ui{width:36px;height:36px}
+.use .ui svg{width:18px;height:18px}
+.use b{font-size:19px}
+.use span{font-size:11.5px}
+.hi img{width:62px;height:62px}
+.hi b{font-size:19px}
+/* moments and steps */
+.mo{aspect-ratio:3/3.4}
+.mo b{font-size:26px}
+.step .ref{aspect-ratio:16/10}
+.step .sb b{font-size:30px}
+/* reviews */
+.rv{padding:18px;gap:8px}
+.rv b{font-size:27px}
+
+
+/* cobalt sections: keylines so cobalt grounds inside cobalt sections stay visible */
+.hdr{border-bottom:2px solid rgba(255,255,255,.18)}
+.foot{border-top:2px solid rgba(255,255,255,.18)}
+.hs .pic{box-shadow:0 0 0 3px #fff,0 30px 70px rgba(0,0,0,.3)}
+
+/* coupon + stock now sit under price */
+.buy .coupon{margin-top:2px}
+.buy .stock{margin-top:-4px}
+/* pairs well with */
+.pairs{display:grid;gap:8px}
+.pair{display:grid;grid-template-columns:56px minmax(0,1fr) auto;gap:12px;align-items:center;padding:8px 10px 8px 8px;border:2px solid var(--ink);border-radius:14px;background:#fff}
+.pth{width:56px;height:64px;border-radius:10px;display:grid;place-items:center;overflow:hidden}
+.pth img{height:86%;width:auto;object-fit:contain}
+.pmid{display:grid;gap:3px;color:var(--ink);text-decoration:none;min-width:0}
+.pmid b{font:400 19px/1 var(--f-d);text-transform:uppercase}
+.pmid span{font-size:12.5px;line-height:1.3;color:var(--mute)}
+.pend{display:grid;justify-items:end;gap:6px}
+.pp{font:500 13px/1 var(--f-m)}
+.padd{font:600 12px/1 var(--f-b);text-transform:uppercase;letter-spacing:.04em;padding:9px 12px;border-radius:999px;border:0;background:var(--signal);color:#fff;cursor:pointer;text-decoration:none;white-space:nowrap}
+.padd.out{background:var(--paper2);color:var(--ink)}
+.padd:hover{background:var(--cobalt)}
+
+/* ——— product thumbnails: always inside, centred (v3) ——— */
+.mp .sw,
+.ci .th,
+.ugc-prod .th,
+.thumbs button,
+.var .sw,
+.fb .sw,
+.satc .th,
+.pth{position:relative;overflow:hidden}
+.mp .sw img,
+.ci .th img,
+.ugc-prod .th img,
+.thumbs button img.pkt,
+.var .sw img,
+.fb .sw img,
+.satc .th img,
+.pth img{position:absolute;left:12%;top:10%;width:76%;height:80%;translate:none;transform:none;max-width:none;object-fit:contain;object-position:50% 50%;margin:0}
+.cmp th img{display:block;width:64px;height:70px;object-fit:contain;object-position:50% 50%;margin:0 auto 10px}
+
+/* ——— pinterest product lead images (cards + kits) ——— */
+.pc .media .lead,.kit .km .lead{position:absolute;inset:0;z-index:3;transition:opacity .3s}
+.pc .media .lead .ref,.kit .km .lead .ref{position:absolute;inset:0;height:100%}
+.pc .media .lead .ref img,.kit .km .lead .ref img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:none;translate:none;max-width:none}
+.pc:hover .media .lead,.pc .media:focus-visible .lead,.kit:hover .km .lead{opacity:0}
+.pc .media .lead .hov{position:absolute;right:10px;bottom:10px;z-index:2;font:500 10px/1 var(--f-m);letter-spacing:.08em;text-transform:uppercase;background:rgba(255,255,255,.92);color:var(--ink);padding:6px 8px;border-radius:999px}
+.kit .km .stk{z-index:4}
+.pc .media .lead .ref .rt,.kit .km .lead .ref .rt{top:auto;bottom:10px;left:10px}
+@media (hover:none){.pc .media .lead .hov{display:none}}
+
+/* ——— main CTAs are always signal red ——— */
+.hs .btn-red,.edit .btn-red,.wide .btn-red{box-shadow:0 0 0 2px #fff}
+.btn-red{background:var(--signal);color:#fff}
+
+/* ——— product shots everywhere (v4): photos fill their frames ——— */
+.pc .media .lead{opacity:1!important}
+.pc .media .alt{z-index:4}
+.kit:hover .km .lead{opacity:1}
+.mp .sw img,.ci .th img,.ugc-prod .th img,.thumbs button img.pkt,.var .sw img,.fb .sw img,.satc .th img,.pth img,.rt-th img,.kit .km > img,.gmain > .pk{position:absolute!important;inset:0;left:0;top:0;width:100%!important;height:100%!important;max-width:none;translate:none;transform:none;object-fit:cover;object-position:50% 40%;filter:none;margin:0}
+.rt-th,.ugc-prod .th,.var .sw,.satc .th,.pth,.ci .th,.mp .sw,.fb .sw{overflow:hidden;position:relative}
+.ci .th{width:72px;flex:none}
+.gmain .bigtx{display:none}
+.gmain > .pk{z-index:1}
+.cmp th img{width:64px;height:76px;object-fit:cover;border-radius:10px;border:2px solid var(--ink)}
+/* problem tiles: the shot sits as a centred framed photo between the line and the footer */
+.prob .pk{position:absolute;left:50%;top:52%;right:auto;bottom:auto;translate:-50% -50%;width:62%;height:44%!important;object-fit:cover;border-radius:12px;box-shadow:0 0 0 3px #fff;filter:none;transform:rotate(-3deg)}
+.prob:hover .pk{transform:rotate(0deg) scale(1.03)}
+/* problem tiles: full-bleed shot under a 30% black scrim so the text reads */
+.prob .pk{left:0;top:0;translate:none;inset:0;width:100%!important;height:100%!important;border-radius:0;box-shadow:none;transform:none;object-position:50% 45%;z-index:0}
+.prob::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.3);z-index:1;pointer-events:none}
+.prob:hover .pk{transform:scale(1.04)}
+.prob .q,.prob .ft{text-shadow:0 1px 12px rgba(0,0,0,.25)}
+
+/* ——— hero v5: full-bleed image, 38% black layer, type + controls on top ——— */
+.hs{grid-template-columns:minmax(0,1fr) auto;grid-template-rows:1fr auto;align-items:end;gap:24px clamp(24px,4vw,64px);padding:40px var(--gr) 104px var(--gl);background:#000}
+.hs .pic{position:absolute!important;inset:0;grid-column:auto;grid-row:auto;height:auto;max-height:none;aspect-ratio:auto;border-radius:0;box-shadow:none!important;z-index:0;transform:scale(1.06);transition:transform 7s cubic-bezier(.2,.7,.2,1)}
+.hs.on .pic{transform:scale(1)}
+.hs .pic::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.38);z-index:1;pointer-events:none}
+.hs .pic .ref img{object-position:var(--pos,50% 50%)}
+.hs .pic .stk{z-index:2;top:28px!important;right:var(--gr)!important;left:auto!important;bottom:auto!important;transform:rotate(6deg)!important}
+.hs .ttl{grid-column:1;grid-row:2;justify-self:start;text-align:left;position:relative;z-index:2;color:#fff;font-size:clamp(72px,10vw,176px);text-shadow:0 2px 30px rgba(0,0,0,.25)}
+.hs .side{grid-column:2;grid-row:2;justify-self:end;align-self:end;position:relative;z-index:2;max-width:320px;padding-bottom:10px}
+.hs .side .m,.hs .side p{color:#fff;opacity:1}
+.hs .side p{font-size:28px}
+.harr{background:rgba(0,0,0,.35);backdrop-filter:blur(6px)}
+.harr:hover{background:#fff;color:var(--ink)}
+.hdots button{background:rgba(255,255,255,.45)}
+@media (prefers-reduced-motion:reduce){.hs .pic{transform:none!important;transition:none}}
+@media (max-width:900px){
+ .hs{position:relative;min-height:clamp(560px,86svh,740px);grid-template-columns:1fr;grid-template-rows:1fr auto auto;gap:16px;padding:24px var(--gr) 92px var(--gl)}
+ .hs .pic{width:auto;justify-self:auto}
+ .hs .ttl{grid-row:2;font-size:clamp(60px,17vw,104px)}
+ .hs .side{grid-column:1;grid-row:3;justify-self:stretch;max-width:none;grid-template-columns:1fr auto;align-items:end;padding-bottom:0}
+ .hs .side p{font-size:22px}
+ .hs .pic .stk{top:18px!important}
+}
+
+/* ——— pack size on product pages ——— */
+.size{display:flex;align-items:center;gap:12px;margin-top:-2px}
+.size .sz{font:400 26px/1 var(--f-d);text-transform:uppercase;background:var(--ink);color:#fff;padding:9px 14px 7px;border-radius:10px;letter-spacing:.01em}
+.size .szl{font:500 11px/1.3 var(--f-m);letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
+.pr .per{flex-basis:100%;font:500 11.5px/1 var(--f-m);letter-spacing:.06em;text-transform:uppercase;color:var(--mute);margin-top:-2px}
+
+/* ——— responsive ——— */
+@media (max-width:1100px){
+  .nav{display:none}.burger{display:grid}
+  .problems{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .g4{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .crew{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .jobs{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .fbt{grid-template-columns:repeat(3,minmax(0,1fr))}.fbsum{grid-column:1/-1}
+  .moments{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .foot .cols{grid-template-columns:1fr 1fr}
+}
+@media (max-width:860px){
+  section{padding-block:60px}
+  .hero .wrap,.split,.chead .top,.pdp,.wide,.faq,.news{grid-template-columns:1fr}
+  .hero .wrap{min-height:0}
+  .hero .art{min-height:440px}
+  .gal{position:static;grid-template-columns:1fr}
+  .thumbs{grid-auto-flow:column;grid-auto-columns:70px;max-height:none;overflow-x:auto;order:2}
+  .gcap{grid-column:1}
+  .g3,.revs{grid-template-columns:1fr}
+  .cstrip{grid-template-columns:1fr 1fr;height:220px}.cstrip .ref:nth-child(n+3){display:none}
+  .steps{grid-template-columns:1fr}
+  .wide .tx{padding:28px}
+}
+@media (max-width:560px){
+  .problems{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .g4{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+  .pc h3{font-size:19px}
+  .crew{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:160px}
+  .jobs,.ings,.vars,.moments{grid-template-columns:1fr}
+  .perks{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .buyrow{grid-template-columns:1fr auto}.buyrow .btn-ink{grid-column:1/-1;order:3}
+  .fbt{grid-template-columns:1fr}
+  .news{padding:26px}
+  .news form{flex-direction:column;border-radius:16px}.news input{padding:14px}
+  .hdr .wrap{gap:10px}.logo{font-size:32px}.logo small{display:none}
+  .icons .ic.hide-s{display:none}
+  .diptych .stamp{font-size:26px;padding:10px 14px}
+  .foot .cols{grid-template-columns:1fr}
+  .tools{width:100%;justify-content:space-between}
+}
+</style>
+
+<div class="ann" aria-label="Announcements"><div class="track" id="ann"></div></div>
+<header class="hdr" id="hdr">
+  <div class="wrap">
+    <button class="ic burger" id="burger" aria-label="Open menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 7h18M3 12h18M3 17h12"/></svg></button>
+    <a class="logo" href="#home" aria-label="Arriv home">Arriv <small>Bold</small></a>
+    <nav class="nav" aria-label="Main">
+      <button type="button" id="shopBtn" aria-expanded="false" aria-controls="mega">Shop ▾</button>
+      <a href="#c-sweat" data-nav="c-sweat">Sweat</a>
+      <a href="#c-hair" data-nav="c-hair">Hair</a>
+      <a href="#c-sun" data-nav="c-sun">Sun</a>
+      <a href="#c-feet" data-nav="c-feet">Feet</a>
+      <a href="#c-kits" data-nav="c-kits">Kits</a>
+      <a href="#home-unsay" class="hot">The Unsayables</a>
+    </nav>
+    <div class="icons">
+      <button class="ic hide-s" aria-label="Search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg></button>
+      <button class="ic hide-s" aria-label="Wishlist"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 20s-7-4.4-7-10a4 4 0 017-2.6A4 4 0 0119 10c0 5.6-7 10-7 10z"/></svg><span class="ct" id="wishCt" hidden>0</span></button>
+      <button class="ic" id="cartBtn" aria-label="Cart"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 8h14l-1.2 11H6.2z"/><path d="M9 8V6a3 3 0 016 0v2"/></svg><span class="ct" id="cartCt">1</span></button>
+    </div>
+  </div>
+  <div class="mega" id="mega" hidden></div>
+</header>
+
+<main id="main"></main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="cols">
+      <div><h6 class="m" style="color:var(--note)">Arriv</h6><p class="mut" style="margin:0;max-width:34ch">Sweat, sun, hair and feet, handled. Built for Indian heat and the commute in between.</p></div>
+      <div><h6 class="m">Shop</h6><ul><li><a href="#c-sweat">Sweat</a></li><li><a href="#c-hair">Hair</a></li><li><a href="#c-sun">Sun</a></li><li><a href="#c-feet">Feet</a></li><li><a href="#c-kits">Kits</a></li></ul></div>
+      <div><h6 class="m">Help</h6><ul><li><a href="#home">Shipping &amp; returns</a></li><li><a href="#home">Track order</a></li><li><a href="#home">Build my routine</a></li><li><a href="#home">Contact</a></li></ul></div>
+      <div><h6 class="m">Follow</h6><ul><li><a href="#home">Instagram @arrivfresh</a></li><li><a href="#home">YouTube</a></li><li><a href="#home">The Unsayables journal</a></li></ul></div>
+    </div>
+    <div class="word2" aria-hidden="true">Arrive like<br><span>you mean it.</span></div>
+    <div class="legal"><span>© 2026 Arriv. Concept redesign for review.</span><span>Lifestyle images are Pinterest references marked REF, to be replaced by the Arriv shoot. Product cutouts are the real Arriv bottles.</span></div>
+  </div>
+</footer>
+
+<div class="satc" id="satc" aria-hidden="true"></div>
+<nav class="pbar" aria-label="Prototype controls">
+  <a href="#home" data-pb="home">Home</a><a href="#shop" data-pb="shop">Collection</a><a href="#p-hair-mist" data-pb="p">Product</a><i></i>
+  <button type="button" id="notesBtn" aria-pressed="false">Shoot notes</button>
+  <button type="button" id="refBtn" aria-pressed="false">Hide REF tags</button>
+</nav>
+<div class="toast" id="toast" hidden></div>
+<div id="layer"></div>
+
+<script>
+const REFS={"flash02": ["133208101467754215", 1.0], "flash05": ["492229434282706275", 0.856], "flash10": ["644788871693419341", 1.25], "flash13": ["3448137210332559", 1.25], "flash14": ["972496113303583298", 1.333], "pastel05": ["1145110643580669126", 1.5], "pastel12": ["425590233560755359", 2.0], "pastel15": ["1140677411889378799", 1.488], "surreal01": ["772085929922284060", 1.792], "surreal03": ["151785449937658322", 1.5], "surreal12": ["422281212063899", 1.25], "surreal14": ["514184482482540596", 1.792], "street01": ["499407046196928713", 1.25], "street02": ["709950328800708159", 1.333], "street03": ["709950328800708159", 1.333], "street05": ["709950328800708159", 1.333], "motion04": ["714524297171284093", 1.25], "motion12": ["231865080811355707", 1.749], "motion13": ["4597893827606228864", 0.667], "motion16": ["838162180696996679", 0.667], "genz01": ["612841461833621921", 1.243], "genz03": ["1114078026597417164", 1.5], "genz05": ["729372102190776911", 1.499], "genz07": ["540994974009541807", 1.5], "genz09": ["36028865765541677", 1.333], "genz13": ["710794753718396277", 1.5], "genz16": ["1121466744752610322", 1.333], "genz17": ["1134836806136874122", 0.75], "genz18": ["633387443792581", 1.25], "sweat01": ["592153051037291251", 1.5], "sweat04": ["55521007902652856", 1.499], "sweat05": ["24769866696861379", 1.328], "sweat10": ["875527983834756157", 1.335], "sweat11": ["1069323505284185186", 1.25], "sweat13": ["282952789084231922", 1.777], "sweat17": ["1032872495804073161", 1.5], "type02": ["643029653089851631", 1.367], "type06": ["955044664754329856", 1.415], "type08": ["1145251380281176213", 1.25], "sticker06": ["1121818588447135525", 1.249], "deo10": ["670121619600584790", 1.001], "hair01": ["794111346844159082", 1.5], "hair05": ["169518373444214803", 1.0], "hair06": ["901071837978056092", 1.41], "hair09": ["561401909770715667", 1.333], "hair11": ["616219161564476328", 1.25], "hair15": ["17944098512556247", 1.0], "sun01": ["1106055989768812766", 1.5], "sun04": ["704531935478035643", 1.777], "sun05": ["1038713101547424563", 1.25], "sun08": ["1407443631228259", 1.25], "sun10": ["11259067814065040", 0.667], "sun12": ["899382990955145032", 1.25], "sun13": ["1108026314593155972", 1.333], "sun18": ["1129770256550310231", 1.25], "hand01": ["690880399166993754", 1.369], "hand04": ["872783602827839353", 1.25], "hand05": ["734579389263950416", 1.512], "hand06": ["1086352741403977299", 1.333], "hand09": ["776448792039945039", 1.5], "hand14": ["636344622389521665", 1.499], "hand17": ["690880399166993613", 1.49], "hand18": ["888616570243884773", 1.242], "feet02": ["5136987070438480", 1.5], "feet04": ["610589662006392438", 1.5], "feet09": ["179792210120024969", 1.249], "feet10": ["1144055111615933327", 1.5], "feet11": ["18858892184503515", 1.258], "feet14": ["199917670953864859", 1.5], "feet15": ["1142999580417850475", 1.777], "feet16": ["1146940230077519623", 1.497], "herospray": ["1086352741403977299", 0.556], "heromodel": ["1088252697487479968", 0.556], "deo11": ["867154103276192368", 1.25], "deo16": ["1136455287243706453", 1.25], "deo17": ["723812971450627527", 1.25], "deo14": ["827677237803761069", 1.0], "pastel07": ["291045194691377248", 1.25]};
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const rupee=n=>'₹'+n.toLocaleString('en-IN');
+const IC={
+ heart:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 20s-7-4.4-7-10a4 4 0 017-2.6A4 4 0 0119 10c0 5.6-7 10-7 10z"/></svg>',
+ truck:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h11v10H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg>',
+ flask:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 3h6M10 3v6l-5 9a2 2 0 002 3h10a2 2 0 002-3l-5-9V3"/></svg>',
+ back:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12a8 8 0 108-8H7"/><path d="M8 1L5 4l3 3"/></svg>',
+ sun:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>'
+};
+/* Pinterest reference figure. note = how the Arriv shoot should do it */
+/* every product + kit image on the site is a Pinterest product shot from the FigJam moodboards */
+const PKREF={pk_sweat:'deo11',pk_citrus:'deo16',pk_cedar:'pastel07',pk_body:'surreal03',pk_cool:'pastel15',pk_sunseal:'deo17',kit_allday:'deo10',kit_h2t:'surreal14',kit_nosweat:'deo14'};
+const pim=k=>PKREF[k]?`img/r_${PKREF[k]}.jpg`:`img/`+k+`.webp`;
+function ref(key,note,cls='',alt,nolink){const r=REFS[key];if(!r)return '';
+  return `<figure class="ref ${cls}"><img src="img/r_${key}.jpg" alt="${esc(alt||'Shoot reference: '+note)}" loading="lazy"><span class="rt">REF · ${nolink?'Pinterest':`<a href="https://www.pinterest.com/pin/${r[0]}/" target="_blank" rel="noopener">Pinterest ↗</a>`}</span><figcaption class="shot"><b>Shoot it like this</b>${esc(note)}</figcaption></figure>`;}
+
+const P={
+ 'sweat-set':{name:'Sweat Set',full:'Sweat Set Roll-On',zone:'Body',coll:'c-sweat',price:449,mrp:549,avail:true,c:'sky',g:'cobalt',pk:'pk_sweat',
+  bold:'Sweat? Set.',eyebrow:'Antiperspirant roll-on',line:'Dry before the 9:14 fast.',sub:'An antiperspirant roll-on for underarms, chest, back and neck. Dries in seconds, no white marks on dark shirts.',
+  tags:['Reduces sweat','Controls odour','Dries quickly','No white marks'],
+  gal:[['sweat13','Underarm and tank close-up in hard side light. Sky bottle in the free hand, sharp.'],['hand09','Three hands on sky blue, Sweat Set in the middle hand. Flash, no shadows.'],['sweat10','Effort shot: wiped brow, direct gaze. Bottle enters frame bottom-left.'],['deo10','Grid crop for the PDP: skin, product, skin, product.'],['genz09','Packed train, friends laughing, one arm up holding the rail.']],
+  moment:['genz05','The monsoon platform','Roll on. The commute stays off your shirt.','Wet air, packed trains and a shirt that has to last till 7 pm. A quick roll-on in the morning is the simplest layer in the routine.','Crew shot on a platform at night, flash, shirts still crisp.'],
+  helps:[['Reduces sweat','Helps reduce sweat and wetness where you apply it'],['Controls odour','Stops odour building on sweat-prone areas'],['Dries quickly','Glides on, absorbs fast'],['No white marks','Dries clean on dark shirts']],
+  steps:[['Prep','Shake well. Skin should be clean and completely dry.','hand05'],['Roll','Roll evenly over underarms, chest or back, on bare skin.','sweat11'],['Absorb','Let it set for a minute, then dress and go.','genz03']],
+  ings:[['Aluminium salts','Reduce sweat','Work at the surface to help reduce sweat and wetness.'],['Glycerin','Comfort','Keeps skin comfortable, never tight.']],
+  faq:[['Will it stain clothes?','It dries clean with no white marks when you let it set before dressing.'],['How is it different from the Body Cream?','The roll-on reduces sweat on underarms, chest and back. The Body Cream absorbs sweat and eases chafing on more zones.'],['Is it sticky?','No. It dries to a clean, non-sticky finish.'],['Daily use okay?','Yes, it is made for everyday application.']],
+  warn:'For external use only. Do not apply on broken or freshly shaved skin.'},
+ 'hair-mist':{name:'Sun Scent Hair Mist',full:'Sun Scent Hair Mist',zone:'Hair',coll:'c-hair',price:649,mrp:799,avail:true,c:'lilac',g:'signal',pk:'pk_citrus',
+  bold:'Helmet hair? Cancelled.',eyebrow:'UV + frizz hair mist',line:'Frizz down, UV off, scent on.',sub:'UV-protection hair mist with argan oil. Anti-frizz, weightless, non-sticky, with a scent that lasts to your desk.',
+  tags:['Anti-frizz','UV filters','Argan oil','Non-sticky'],
+  scents:[['Citrus Cashmere','Fresh · bright','pk_citrus','lilac'],['Cedar Noir','Warm · woody','pk_cedar','rose']],
+  gal:[['hair05','Hair flip against cobalt, flash freezes every strand. Bottle held high, mid-spray.'],['hair11','Backlit hair flick under a street light at night. Mist catches the light.'],['street03','Night street, flash, mid-stride. Lilac bottle peeking from a tote.'],['motion04','Motion-blurred commuter, bottle in hand stays sharp.'],['hair15','Graphic black-and-white wind shot for the scent story.']],
+  moment:['hair06','The helmet-off moment','One spray and the helmet never happened.','Autos, bikes and platforms undo a good hairstyle in minutes. A light mist before you leave keeps frizz down and leaves a scent that lasts to your desk.','Helmet off on a scooter at night, hair flick with light trails behind.'],
+  helps:[['Frizz control','Keeps hair manageable through heat and humidity'],['UV protection','Helps protect hair from sun damage and colour fade'],['Nourishes','Argan oil and vitamin E for softer hair'],['Lasting scent','Bergamot, patchouli and white musk']],
+  steps:[['Spray','Shake well. Mist 15–20 cm away over dry or damp hair.','hand06'],['Style','Style as usual and let it air dry. No rinse.','hair01'],['Go','Helmet on, helmet off. Hair stays put.','street01']],
+  ings:[['Argan oil','Nourish','Smooths and softens hair and adds shine.'],['Vitamin E','Repair','Supports repair and keeps hair healthy.'],['UV filters','Protect','Shields strands and colour from daily UV.'],['Fragrance','Refresh','Bergamot, patchouli and white musk.']],
+  faq:[['Does it make hair sticky or crunchy?','No. It is a fine, weightless mist with no hold or residue.'],['Which scent should I pick?','Citrus Cashmere is fresh and bright. Cedar Noir is warm and woody.'],['Can I use it on coloured hair?','Yes. The UV filters help protect colour from fading in daily sun.'],['When do I spray it?','Right before you head out, over dry or damp lengths.']],
+  warn:'For external use only. Avoid spraying near eyes. Patch test before first use.'},
+ 'body-cream':{name:'Triple Action Cream',full:'Triple Action Whole Body Cream',zone:'Body',coll:'c-sweat',price:649,mrp:799,avail:true,c:'peach',g:'cobalt',pk:'pk_body',
+  bold:'Three jobs. One squeeze.',eyebrow:'Odour · sweat · chafing',line:'Sweat, odour and chafing, handled.',sub:'A light cream for the zones that sweat: underarms, inner thighs, under the bust and back. Absorbs in, no film.',
+  tags:['Odour protection','Absorbs sweat','Anti-chafe','Fast-absorbing'],
+  gal:[['sweat01','Collarbone sweat macro in hard light. Cream dab on the shoulder.'],['hand04','Product pushed toward camera on a signal red set. Confident, direct.'],['sweat11','Skin close-up with three words of copy printed on the skin.'],['flash10','Hand-to-hand pass under hard flash on a warm ground.'],['sweat17','Post-run breather, glistening shoulders, bottle on the floor.']],
+  moment:['street02','The 8:42 commute','Sweat control that shows up before you do.','The crush of the local, the auto with no shade. A morning layer on the zones that sweat keeps you dry and comfortable to your desk.','Night street walk in flash, outfit intact, bottle in the bag.'],
+  helps:[['Odour protection','Keeps body odour from building on long days'],['Absorbs sweat','Tapioca starch soaks up sweat on contact'],['Relieves chafing','Softens friction where skin meets skin'],['Fast-absorbing','Sinks in without a greasy finish']],
+  steps:[['Prep','Make sure skin is clean and completely dry.','hand17'],['Apply','Spread a thin layer on sweat- or friction-prone zones.','sweat05'],['Massage','Rub in until fully absorbed. Daily or as needed.','genz13']],
+  ings:[['Tapioca starch','Dry feel','Absorbs sweat and keeps skin feeling dry.'],['Shea butter','Soothe','Softens and soothes friction-prone skin.'],['Kaolin','Mattify','Keeps shine and wetness down.'],['Glycerin + lactic acid','Comfort','Keep skin comfortable and smooth.']],
+  faq:[['Where do I use it?','Underarms, inner thighs, under the bust and back. Clean, dry skin.'],['Is it greasy?','No. It is a light cream that absorbs in and leaves no film.'],['Does it help with chafing?','Yes. Shea butter softens friction, which is why people use it on long-walk days.'],['How long does it last?','One morning application is designed to carry through the workday.']],
+  warn:'For external use only. Do not apply on broken skin. Patch test before first use.'},
+ 'cool-sole':{name:'Cool Sole',full:'Cool Sole Foot Spray',zone:'Feet',coll:'c-feet',price:349,mrp:449,avail:true,c:'sage',g:'signal',pk:'pk_cool',
+  bold:'Shoes off. No apologies.',eyebrow:'Instant foot odour control',line:'A cooling reset for feet on the move.',sub:'A quick foot spray with peppermint and clove that cools on contact and keeps shoe odour down all day.',
+  tags:['Odour control','Limits wetness','Cooling relief','Dries fast'],
+  gal:[['feet10','Feet and sneakers on a signal red seamless, low angle. Sage bottle on the floor.'],['feet14','Jump shot from below, sneakers to camera, wide lens.'],['feet16','Lacing up on a green set, bottle beside the shoe.'],['feet09','Pile of shoes at the door, top-down flash, bottle on top.'],['feet02','Line of shoes walking in, flash on white.']],
+  moment:['feet11','The shoes-off moment','Foot odour doesn’t enter the room first.','The team dinner, the house visit, the temple. Cool Sole in the morning means the shoes can come off anywhere.','Sitting on the floor kicking sneakers off, flash, playful.'],
+  helps:[['Odour control','Stops shoe odour building through the day'],['Limits wetness','Keeps feet drier inside closed shoes'],['Cooling relief','Peppermint and menthol for an instant cool-down'],['Dries fast','Air-dries before you lace up']],
+  steps:[['Prep','Shake well. Feet clean and dry.','feet04'],['Spray','Mist from 10–15 cm away, evenly.','hand01'],['Dry','Let it dry before socks and shoes.','feet15']],
+  ings:[['Peppermint oil','Cool','Cools on contact and freshens instantly.'],['Clove leaf oil','Fresh','Controls odour at the source.'],['Lemongrass + eucalyptus','Scent','A clean, cooling scent blend.']],
+  faq:[['How long does one spray last?','A single morning application is designed to carry you through a workday in closed shoes.'],['Is it sticky?','No. It dries quickly to a clean finish before socks go on.'],['Can I spray it inside shoes?','It is made for feet. Apply to clean, dry feet for best results.'],['Does it stop odour or just mask it?','Clove leaf oil works on odour at the source, with a cooling scent on top.']],
+  warn:'For external use only. Do not use on broken skin. Avoid eyes.'},
+ sunseal:{name:'SunSeal SPF 50+',full:'SunSeal SPF 50+ PA++++',zone:'Face',coll:'c-sun',price:699,mrp:899,avail:false,c:'sun',g:'cobalt',pk:'pk_sunseal',
+  bold:'42°C outside. Sealed.',eyebrow:'Daily sunscreen',line:'Matte. Light. No white cast.',sub:'Broad-spectrum SPF 50+ PA++++ for Indian heat, humidity and the walk from the station to the desk.',
+  tags:['SPF 50+ PA++++','No white cast','Fragrance-free','Sweat-ready'],
+  gal:[['sun04','Arm raised against a hard blue sky, orange tube in hand. Low angle, harsh sun.'],['sun13','Dappled hard shadow across the face. Tube lower right.'],['sun10','Tube held behind the neck, back to camera, sky behind.'],['sun18','Poster: giant tube casting a shade over a busy square.'],['sweat04','Sweat-glossy profile against blue, eyes closed into the sun.']],
+  moment:['sun05','The 2 PM sun','SPF for when India turns up the heat.','Glass blocks UVB, not UVA. The walk from the metro to the office is peak exposure. SunSeal goes on light and stays matte through it.','Hands holding orange tubes up to the sun, sea or sky behind.'],
+  helps:[['Daily UV','Broad-spectrum UVA + UVB'],['Commute tanning','Guards the walk from station to desk'],['No greasy film','Matte, sits under makeup'],['Fragrance-free','Kind to sensitive skin']],
+  steps:[['Dispense','Two to three finger-lengths for face and neck.','sun01'],['Apply','15 minutes before sun. Blends clear.','sun08'],['Reapply','Every 3–4 hours and after heavy sweat.','sun12']],
+  ings:[['Hybrid UV filters','Broad spectrum','New-generation filters with zinc oxide and titanium dioxide.'],['Zinc oxide','Mineral shield','Reflects UV, gentle on breakout-prone skin.'],['Ceramide 3','Barrier care','Supports the barrier so daily SPF never feels tight.'],['Free from','Clean formula','No added fragrance, parabens or alcohol.']],
+  faq:[['Will it leave a white cast?','No. SunSeal blends clear on Indian skin tones and dries matte.'],['Is it okay for oily or acne-prone skin?','Yes. Lightweight, fragrance-free and made for humidity.'],['Can I wear it under makeup?','Yes. Give it a minute to set, then apply as usual.'],['How often should I reapply?','Every 3–4 hours of sun, and sooner after heavy sweating.']],
+  warn:'For external use only. Avoid contact with eyes. Patch test before first use.'}
+};
+const PAIRS={'sweat-set':[['body-cream','Takes over where the roll-on stops: thighs, chest, under-bust.'],['cool-sole','Dry pits, dry shoes. The full commute set.']],
+ 'hair-mist':[['sunseal','UV for hair, UV for skin. Same 13:10 sun.'],['sweat-set','Helmet off, arms up, still dry.']],
+ 'body-cream':[['sweat-set','Underarms covered, the rest of you too.'],['cool-sole','Friction above, odour below.']],
+ 'cool-sole':[['sweat-set','Fresh from shoes to shirt.'],['body-cream','For the long walk days.']],
+ 'sunseal':[['hair-mist','Sun on skin, sun on hair.'],['sweat-set','Hot day, two problems, one pocket.']]};
+const ORDER=['sweat-set','hair-mist','body-cream','cool-sole','sunseal'];
+const KITS={
+ 'head-to-toe':{name:'Head-to-Toe Kit',price:1399,mrp:1647,off:15,img:'kit_h2t',g:'cobalt',items:['sunseal','hair-mist','body-cream','cool-sole'],beat:'Sun, hair, body, feet. The full commute, covered.'},
+ 'no-sweat':{name:'No Sweat Kit',price:1229,mrp:1447,off:15,img:'kit_nosweat',g:'signal',items:['body-cream','sweat-set','cool-sole'],beat:'For days when heat and close quarters collide.'},
+ 'all-day':{name:'All Day Backup',price:948,mrp:998,off:5,img:'kit_allday',g:'cobalt',items:['sunseal','hair-mist','cool-sole'],beat:'Three bag-ready touch-ups for long days.'}
+};
+const COLL={
+ shop:{t:'The whole kit',sub:'Five fixes for sweat, sun, hair and feet. Built for 42°C, packed trains and the walk in.',items:ORDER,strip:['genz05','sweat04','hair05','feet10'],notes:['Crew on a night platform, flash','Sun on skin, hard blue sky','Hair flip on cobalt','Sneakers on red seamless']},
+ 'c-sweat':{t:'Sweat',sub:'Roll-on for everyday, cream for full coverage. Your shirt makes it to 7 pm.',items:['sweat-set','body-cream'],strip:['sweat13','sweat01','genz09','hand04'],notes:['Tank close-up, side light','Collarbone macro','Packed train, arm up','Product to camera on red']},
+ 'c-hair':{t:'Hair',sub:'One mist, two scents. Helmet hair, humidity frizz and UV, handled in one spray.',items:['hair-mist'],strip:['hair05','hair11','motion04','street03'],notes:['Hair flip on cobalt','Backlit night flick','Motion blur commuter','Night street, flash']},
+ 'c-sun':{t:'Sun',sub:'Daily SPF that stays matte through the 2 PM walk. No white cast, no grease.',items:['sunseal','hair-mist'],strip:['sun04','sun13','sun10','sun18'],notes:['Arm up, hard sky','Dappled shadow face','Tube behind the neck','Giant tube poster']},
+ 'c-feet':{t:'Feet',sub:'One spray in the morning. Shoes can come off anywhere.',items:['cool-sole'],strip:['feet10','feet14','feet16','feet09'],notes:['Feet on red seamless','Jump shot from below','Lacing on green','Shoe pile at the door']},
+ 'c-kits':{t:'Kits',sub:'Pair the fixes into a routine and save up to 15%.',items:[],kits:true,strip:['genz01','genz17','genz13','genz07'],notes:['Crew with the full kit','Close crew portrait','Friends in a booth','Group selfie, flash']}
+};
+const REV=[
+ {n:'Rohan T.',c:'Mumbai',r:5,p:'sweat-set',t:'No marks on my shirts',b:'Dries quickly and doesn’t leave white marks on dark shirts. Underarms stay drier through the local train.'},
+ {n:'Sana A.',c:'Delhi',r:4,p:'sweat-set',t:'Simple and effective',b:'Fuss-free roll-on. Takes a minute to dry, so I apply before brushing my teeth.'},
+ {n:'Aniket P.',c:'Pune',r:5,p:'hair-mist',t:'Hair survives the auto',b:'My hair gets super frizzy in an auto. The mist keeps it much neater by the time I reach office, and Citrus Cashmere smells really good.'},
+ {n:'Pooja N.',c:'Mumbai',r:5,p:'hair-mist',t:'Monsoon frizz, handled',b:'Humidity used to mean frizz by 10 am. Two sprays before I leave and it stays manageable. Not sticky at all.'},
+ {n:'Divya K.',c:'Hyderabad',r:5,p:'body-cream',t:'Bought it for chafing',b:'Also helps with odour and sweat on hot days. Absorbs fast, no film.'},
+ {n:'Arjun K.',c:'Bengaluru',r:5,p:'body-cream',t:'Bike commute essential',b:'I ride to work in full heat. One layer in the morning and I’m not uncomfortable by the time I park.'},
+ {n:'Vikram S.',c:'Gurugram',r:5,p:'cool-sole',t:'Shoes-off moment, fine now',b:'Ten hours in formal shoes and then dinner at a friend’s place. One spray in the morning and I don’t think about it.'},
+ {n:'Karan M.',c:'Ahmedabad',r:5,p:'cool-sole',t:'Cooling, dries fast',b:'The peppermint cool is instant and it dries before I put socks on.'},
+ {n:'Sneha M.',c:'Mumbai',r:5,p:'sunseal',t:'Survives metro + auto',b:'Finally a sunscreen that doesn’t melt off during my 45-minute commute. No white cast, no stickiness.'},
+ {n:'Kavitha S.',c:'Chennai',r:5,p:'sunseal',t:'Sits well under makeup',b:'Absorbs in seconds and doesn’t pill. My face doesn’t feel greasy even by evening in Chennai heat.'}
+];
+const HERO=[
+ {k:'flash05',pos:'50% 50%',ar:'720/616',bg:'var(--cobalt)',fg:'#fff',ac:'var(--note)',sb:'var(--note)',sc:'var(--ink)',t:['Arrive','loud.'],eb:'New season · Built for 42°C',line:'Five fixes for the Indian commute.',cta:'Shop the fixes',go:'shop',stk:'Pastel, punched',note:'Product on a cut-paper starburst, hard flash, clashing pink and green. Shoot the Body Cream jar or Sweat Set this way.'},
+ {k:'flash10',pos:'50% 45%',ar:'720/900',bg:'var(--signal)',fg:'#fff',ac:'var(--note)',sb:'var(--sky)',sc:'var(--ink)',t:['Sweat?','Set.'],eb:'Sweat Set Roll-On',line:'Dry before the 9:14 fast.',cta:'Shop Sweat Set',go:'p-sweat-set',stk:'No white marks',note:'Two hands, one pass: the sky Sweat Set handed across a warm orange ground under hard flash.'},
+ {k:'surreal03',pos:'55% 35%',ar:'720/1080',bg:'var(--cobalt)',fg:'#fff',ac:'var(--note)',sb:'var(--peach)',sc:'var(--ink)',t:['One','squeeze.'],eb:'Triple Action Cream',line:'Sweat, odour and chafing, handled.',cta:'Shop the cream',go:'p-body-cream',stk:'Three jobs',note:'Supersized: a model carries a giant peach Triple Action bottle like luggage on a clean light set.'},
+ {k:'flash02',pos:'50% 50%',ar:'1/1',bg:'var(--signal)',fg:'#fff',ac:'var(--note)',sb:'var(--lilac)',sc:'var(--ink)',t:['Built for','42°C.'],eb:'The whole kit',line:'Soft bottles. Hard working.',cta:'Build a kit',go:'c-kits',stk:'Save 15%',note:'Diagonal two-tone set, hard shadow, one bottle standing alone. Shoot the lilac hair mist on a pink and green split.'}
+];
+const SI={
+ train:'<path d="M7 2h10a3 3 0 013 3v10a3 3 0 01-3 3l2 3h-2.5l-2-3h-5l-2 3H5l2-3a3 3 0 01-3-3V5a3 3 0 013-3zm-1 4v5h12V6H6zm2 8.5a1.5 1.5 0 100 3 1.5 1.5 0 000-3zm8 0a1.5 1.5 0 100 3 1.5 1.5 0 000-3z"/>',
+ brief:'<path d="M9 3h6a2 2 0 012 2v1h3a2 2 0 012 2v4H2V8a2 2 0 012-2h3V5a2 2 0 012-2zm0 3h6V5H9v1zM2 13.5h8V15h4v-1.5h8V19a2 2 0 01-2 2H4a2 2 0 01-2-2v-5.5z"/>',
+ gym:'<path d="M2 9h2V7h3v10H4v-2H2V9zm20 0h-2V7h-3v10h3v-2h2V9zM8 11h8v2H8z"/><rect x="7.5" y="5" width="2" height="14" rx="1"/><rect x="14.5" y="5" width="2" height="14" rx="1"/>',
+ helmet:'<path d="M12 3a9 9 0 019 9v3H11v-4H3.6A9 9 0 0112 3zM2 17h20v2a2 2 0 01-2 2H6a4 4 0 01-4-4z"/>',
+ rain:'<path d="M7 15a5 5 0 01-.6-9.96A6 6 0 0118 6.5 4.25 4.25 0 0117.5 15H7z"/><path d="M8 17l-1.5 4M12.5 17L11 21M17 17l-1.5 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>',
+ sun:'<circle cx="12" cy="12" r="5"/><path d="M12 1v3M12 20v3M1 12h3M20 12h3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>',
+ drop:'<path d="M12 2s7 7.6 7 12.5A7 7 0 015 14.5C5 9.6 12 2 12 2z"/>',
+ friction:'<path d="M4 4h6v16H4a2 2 0 01-2-2V6a2 2 0 012-2zm10 0h6a2 2 0 012 2v12a2 2 0 01-2 2h-6V4z"/><path d="M12 6v12" stroke="#fff" stroke-width="2" stroke-dasharray="2 2"/>',
+ walk:'<circle cx="13" cy="4" r="2.2"/><path d="M10.5 7.5l3-.8 2.6 3.6 3 .9-.6 2-3.8-1.1-1.1-1.4-1 4.2 2.6 3V22h-2.2v-3.4l-2.7-2.9-1.2 3.6L6 22l-1.8-1 3.5-5.5 1.3-5.3-1.7.9-.8 3.1-2.1-.5 1.1-4.1z"/>',
+ shoe:'<path d="M2 15.5V8l5 1.5L10 7l3 4 6 1.5a3 3 0 013 3V17H2v-1.5zM2 18h20v1.5a1.5 1.5 0 01-1.5 1.5h-17A1.5 1.5 0 012 19.5V18z"/>',
+ home:'<path d="M12 2.5l10 8.5h-3v10h-5v-6h-4v6H5V11H2z"/>',
+ spark:'<path d="M12 2l2.4 6.6L21 11l-6.6 2.4L12 20l-2.4-6.6L3 11l6.6-2.4zM19 16l1 2.5 2.5 1-2.5 1-1 2.5-1-2.5-2.5-1 2.5-1z"/>'
+};
+const TOP={
+ 'sweat-set':{uses:[['train','The commute','Long rides'],['brief','The office','Full days'],['gym','The gym','After hours']],ing:[['Aluminium salts','Reduce sweat','i_sweat1'],['Glycerin','Comfort','i_sweat2']]},
+ 'hair-mist':{uses:[['helmet','Helmet & bike rides','Hair stays put'],['rain','Humid days','Frizz down'],['sun','Daily sun','UV shield']],ing:[['Argan oil','Nourish','i_hair1'],['Vitamin E','Repair','i_hair2'],['Bergamot','Scent','i_hair3']]},
+ 'body-cream':{uses:[['drop','Underarms & back','Absorbs sweat'],['friction','Inner thighs','No chafing'],['walk','Long walk days','Odour control']],ing:[['Tapioca starch','Dry feel','i_body1'],['Shea butter','Soothe','i_body2'],['Kaolin','Mattify','i_body3']]},
+ 'cool-sole':{uses:[['shoe','Closed shoes','All day'],['gym','Gym to office','Quick reset'],['home','Shoes-off visits','No odour']],ing:[['Peppermint oil','Cool','i_cool1'],['Clove leaf oil','Fresh','i_cool2'],['Eucalyptus','Scent','i_cool3']]},
+ sunseal:{uses:[['sun','Daily commute','UVA + UVB'],['spark','Under makeup','Matte finish'],['drop','Oily skin','Non-greasy']],ing:[['Mineral filters','Broad spectrum','i_sun1'],['Ceramide 3','Barrier care','i_sun2'],['Fragrance-free','Gentle','i_sun3']]}
+};
+const UGC=[
+ {n:'01',pin:'959126051919016825',h:'@meera.moves',p:'body-cream',hook:'POV: my 8:42 local survival kit',brief:'Talk to camera, product held up at eye level, quick cuts between zones. Natural window light, no ring light.'},
+ {n:'02',pin:'966514770053254032',h:'@kabir.mp4',p:'hair-mist',v:'Cedar Noir',hook:'Filming from the auto. Hair still fine.',brief:'Selfie POV from inside an auto or cab, wind in the hair, one spray mid-sentence.'},
+ {n:'03',pin:'139330182217823062',h:'@sana.a',p:'sweat-set',hook:'Stick or roll-on? Not even close.',brief:'Two products held side by side, creator picks the Sweat Set, dry-shirt reveal at the end.'},
+ {n:'04',pin:'28006828930063772',h:'@priya.r',p:'hair-mist',v:'Citrus Cashmere',hook:'Two sprays. Helmet on. Watch.',brief:'Spray toward camera so the mist catches the light, cut to helmet off and hair intact.'},
+ {n:'05',pin:'297096906687269467',h:'@rohit.k',p:'hair-mist',v:'Cedar Noir',hook:'Guys. Cedar Noir. Mirror. Done.',brief:'Male creator, mirror shot, spray and go in under five seconds. Deadpan.'},
+ {n:'06',pin:'1006976797946749578',h:'@ishaan.wav',p:'sunseal',hook:'SPF check, 2 PM, 42°C.',brief:'Low angle against a hard blue sky, tube pushed toward the lens, sunglasses on.'},
+ {n:'07',pin:'129337820544641693',h:'@thecommutecrew',p:'sweat-set',hook:'Walk to office. Zero sweat patches.',brief:'Follow-cam walk on a city street, arms up at the end to show a dry shirt.'},
+ {n:'08',pin:'1134766437371017232',h:'@ananya.sun',p:'body-cream',hook:'Mirror check after the walk in.',brief:'Shot through a playful frame or mirror, sunny, product enters frame at the end.'}
+];
+const ROUTES=[
+ {id:'local',label:'Local train',who:'Riya · Mumbai',img:'genz09',note:'Packed coach, no fan, monsoon humidity.',steps:[['07:50','sweat-set','After brushing, before the shirt goes on'],['08:30','hair-mist','Two sprays of Citrus Cashmere at the door'],['18:30','hair-mist','A top-up before you head out again']],kit:'no-sweat'},
+ {id:'bike',label:'Two-wheeler',who:'Arjun · Bengaluru',img:'hair11',note:'14 km, a helmet and a laptop bag.',steps:[['07:45','body-cream','Back and underarms, under the laptop bag'],['08:10','hair-mist','Cedar Noir, right before the helmet'],['09:05','hair-mist','One spray after the helmet comes off']],kit:'head-to-toe'},
+ {id:'walk',label:'Metro + walk',who:'Sana · Delhi',img:'sun04',note:'Direct sun on the walk, 42°C by noon.',steps:[['08:00','sunseal','Face and neck, 15 minutes before you leave'],['08:05','body-cream','Inner thighs for the long walk'],['13:10','sunseal','Reapply for the lunch walk']],kit:'all-day'},
+ {id:'gym',label:'Gym to office',who:'Kabir · Pune',img:'feet14',note:'Gym at 7, formal shoes by 10, dinner out.',steps:[['07:00','sweat-set','After the gym shower'],['09:40','cool-sole','Before the formal shoes go on'],['21:00','cool-sole','Before the shoes come off at dinner']],kit:'no-sweat'}];
+let ROUTE='local';
+function routeItems(r){return [...new Set(r.steps.map(x=>x[1]))]}
+function routeCard(){const r=ROUTES.find(x=>x.id===ROUTE);const items=routeItems(r);const avail=items.filter(i=>P[i].avail);const tot=avail.reduce((a,i)=>a+P[i].price,0);const K=KITS[r.kit];
+ return `<div class="rt-card">${ref(r.img,'Routine portrait: '+r.who+', '+r.note+' Shot on the actual commute, flash, Indian casting.','rt-img')}
+  <div class="rt-body"><span class="m">${esc(r.who)} · ${esc(r.note)}</span>
+   <ol class="rt-steps">${r.steps.map(([t,id,txt])=>{const [pk]=pkOf(id);return `<li><time>${t}</time><span class="rt-th" style="background:${gv(P[id].g)}"><img src="${pim(pk)}" alt=""></span><span><b>${esc(P[id].name)}</b>${esc(txt)}${P[id].avail?'':' <em>· back soon</em>'}</span></li>`}).join('')}</ol>
+   <div class="rt-foot"><div><span class="m mut">Your routine</span><div class="rt-tot">${rupee(tot)}</div></div><button class="btn btn-red" data-addroute="${r.id}">Add my routine</button><a class="link" href="#c-kits">or save with the ${esc(K.name)}</a></div>
+  </div></div>`}
+const store={get(k,d){try{const v=localStorage.getItem('arrivBold.'+k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem('arrivBold.'+k,JSON.stringify(v))}catch(e){}}};
+let CART=store.get('cart',[{id:'hair-mist',v:'Citrus Cashmere',q:1}]);
+let WISH=store.get('wish',[]);
+let VAR={'hair-mist':'Citrus Cashmere'};
+let FILTER='All',SORT='feat';
+const gv=g=>`var(--${g})`;
+const pkOf=(id)=>{const p=P[id];if(p.scents){const s=p.scents.find(x=>x[0]===VAR[id])||p.scents[0];return [s[2],s[3]]}return [p.pk,p.c]};
+
+/* ——— shared blocks ——— */
+/* Pinterest product shots lead the cards; the Arriv bottle shows on hover */
+const PREF={'sweat-set':['deo11','Roll-on held tight to skin, one bold line of type over a flat colour ground.'],
+ 'hair-mist':['deo16','Two hands, two bottles, pastel ground, hand-drawn callouts around the spray.'],
+ 'body-cream':['surreal03','Supersized tube carried like a statement piece through a clean studio.'],
+ 'cool-sole':['pastel15','Single bottle glowing inside a lit arch, dark ground, one hard light.'],
+ 'sunseal':['deo17','Bottle tucked into a beach towel, warm summer light, soft folds.']};
+const KREF={'kit_allday':['deo10','Grid of product and skin close-ups, every tile a different colour block.'],
+ 'kit_h2t':['surreal14','Product stacked like a staircase with someone walking through it.'],
+ 'kit_nosweat':['deo14','Product with a drawn route line across a sky-blue ground.']};
+function pcard(id,opts={}){const p=P[id];const [pk]=pkOf(id);const alt=p.gal[0];const on=WISH.includes(id);
+ return `<article class="pc">
+  <a class="media" href="#p-${id}" style="background:${gv(p.g)}" aria-label="${esc(p.full)}">
+   <span class="big">${esc(p.bold)}</span>
+   <span class="lead">${ref(PKREF[pk],(PREF[id]||[,''])[1],'','',1)}</span><span class="alt">${ref(alt[0],alt[1],'','',1)}</span>
+  </a>
+  <span class="badge">${p.avail?`<span class="stk" style="background:var(--${p.c})">${esc(p.tags[0])}</span>`:'<span class="stk" style="background:var(--paper2)">Back soon</span>'}</span>
+  <button class="wish" data-wish="${id}" aria-pressed="${on}" aria-label="${on?'Remove from':'Save to'} wishlist">${IC.heart}</button>
+  <div class="row"><div><h3><a href="#p-${id}">${esc(p.name)}</a></h3><div class="line">${esc(p.line)}</div></div><div class="price">${rupee(p.price)}<s>${rupee(p.mrp)}</s></div></div>
+  ${p.scents?`<div class="dots" aria-label="Two scents">${p.scents.map(s=>`<i style="background:var(--${s[3]})" title="${s[0]}"></i>`).join('')}</div>`:''}
+  ${p.avail?`<button class="add" data-add="${id}">Add to cart</button>`:`<a class="add" href="#p-${id}" style="text-align:center">Notify me</a>`}
+ </article>`;}
+function kitcard(k){const K=KITS[k];
+ return `<article class="kit"><div class="km" style="background:${gv(K.g)}"><img src="${pim(K.img)}" alt="${esc(K.name)}" loading="lazy">${KREF[K.img]?`<span class="lead">${ref(KREF[K.img][0],KREF[K.img][1],'','',1)}</span>`:''}<span class="stk" style="background:var(--note)">Save ${K.off}%</span></div>
+  <div class="kb"><h3>${esc(K.name)}</h3><p class="mut" style="margin:0;font-size:14px">${esc(K.beat)}</p>
+  <div class="dots">${K.items.map(i=>`<i style="background:var(--${P[i].c})" title="${esc(P[i].name)}"></i>`).join('')}</div>
+  <div class="row"><span class="price" style="font-size:20px">${rupee(K.price)}<s>${rupee(K.mrp)}</s></span><button class="btn btn-red" data-addkit="${k}" style="padding:12px 18px">Add kit</button></div></div></article>`;}
+function stars(n){return '★★★★★'.slice(0,n)+'☆☆☆☆☆'.slice(0,5-n)}
+function revCards(list){return list.map(r=>`<article class="rv"><span class="stars" aria-label="${r.r} out of 5">${stars(r.r)}</span><b>${esc(r.t)}</b><p>${esc(r.b)}</p><div class="who"><span>${esc(r.n)} · ${esc(r.c)}</span><span>${esc(P[r.p].name)}</span></div></article>`).join('')}
+function faqAcc(list){return `<div class="acc">${list.map(f=>`<details><summary>${esc(f[0])}</summary><div class="ans">${esc(f[1])}</div></details>`).join('')}</div>`}
+const crumb=parts=>`<div class="wrap crumb">${parts.map((p,i)=>i<parts.length-1?`<a href="#${p[1]}">${esc(p[0])}</a><span>/</span>`:`<span style="color:var(--ink)">${esc(p[0])}</span>`).join('')}</div>`;
+
+/* ——— HOME ——— */
+function pageHome(){
+ const probs=[['Sweat','sweat-set','Dry before the 9:14','cobalt'],['Helmet hair','hair-mist','Frizz, UV, scent','signal'],['Chafing','body-cream','Three jobs, one cream','cobalt'],['Smelly shoes','cool-sole','Shoes off, anywhere','signal'],['2 PM sun','sunseal','SPF 50+, no white cast','cobalt']];
+ return `
+ <section class="hero" id="hero" aria-roledescription="carousel" aria-label="Featured">
+  <div class="hc">${HERO.map((h,i)=>`<div class="hs${i===0?' on':''}" style="--bg:${h.bg};--fg:${h.fg};--ac:${h.ac};--ar:${h.ar};--pos:${h.pos||'50% 50%'}" role="group" aria-roledescription="slide" aria-label="${i+1} of ${HERO.length}" ${i?'aria-hidden="true"':''}>
+    <h${i?'2':'1'} class="ttl d">${h.t[0]} <em>${h.t[1]}</em></h${i?'2':'1'}>
+    <div class="pic">${ref(h.k,h.note,'','Campaign reference: '+h.t.join(' '))}<span class="stk" style="background:${h.sb};color:${h.sc};bottom:18px;left:50%;transform:translateX(-50%) rotate(-4deg)">${h.stk}</span></div>
+    <div class="side"><span class="m">${h.eb}</span><p>${h.line}</p><a class="btn btn-red" href="#${h.go}">${h.cta}</a></div>
+   </div>`).join('')}</div>
+  <div class="hnav"><button class="harr" data-hero="-1" aria-label="Previous slide">←</button><div class="hdots">${HERO.map((h,i)=>`<button data-hgo="${i}" aria-label="Go to slide ${i+1}" aria-current="${i===0}"></button>`).join('')}</div><button class="harr" data-hero="1" aria-label="Next slide">→</button></div>
+ </section>
+
+ <section class="ink"><div class="wrap">
+  <div class="sec-head"><div><div class="eyebrow"><b>01</b><span class="m" style="color:var(--note)">Bestsellers</span></div><h2 class="d">Soft bottles.<br>Hard working.</h2></div><a class="link" href="#shop">Shop all</a></div>
+  <div class="grid g4">${['sweat-set','hair-mist','body-cream','cool-sole'].map(id=>pcard(id)).join('')}</div>
+ </div></section>
+ <section class="ink ugc" id="ugc"><div class="wrap">
+  <div class="sec-head"><div><div class="eyebrow"><b>02</b><span class="m" style="color:var(--note)">#Arrivd on repeat</span></div><h2 class="d">Seen on<br>the commute.</h2></div>
+   <div class="ugc-nav"><button class="ugc-arrow" data-ugc="-1" aria-label="Previous videos">←</button><button class="ugc-arrow" data-ugc="1" aria-label="Next videos">→</button></div></div>
+  <div class="ugc-row" id="ugcRow">${UGC.map(u=>{const p=P[u.p];const pk=u.v?(p.scents.find(s=>s[0]===u.v)||p.scents[0])[2]:p.pk;return `<article class="ugc-card">
+   <video src="img/ugc${u.n}.mp4" poster="img/ugc${u.n}.jpg" muted loop playsinline preload="none" aria-label="${esc(u.hook)}"></video>
+   <div class="ugc-top"><span class="who"><i style="background:var(--${p.c})"></i>${u.h}</span><span class="rt">REF · <a href="https://www.pinterest.com/pin/${u.pin}/" target="_blank" rel="noopener">Pinterest ↗</a></span></div>
+   <button class="ugc-snd" data-snd aria-label="Unmute" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 9h4l5-4v14l-5-4H4z"/><path class="w" d="M17 9l4 6M21 9l-4 6"/></svg></button>
+   <p class="hook">${esc(u.hook)}</p>
+   <div class="ugc-shot"><b>Brief the creator</b>${esc(u.brief)}</div>
+   <a class="ugc-prod" href="#p-${u.p}"><span class="th" style="background:${gv(p.g)}"><img src="${pim(pk)}" alt=""></span><span class="nm"><b>${esc(u.v||p.name)}</b><span>${rupee(p.price)}</span></span><span class="go">Shop</span></a>
+  </article>`}).join('')}</div>
+  <p class="mut" style="margin:22px 0 0;font-size:13.5px">Creator clips are Pinterest references for the UGC brief. Replace them with Arriv creator videos; each card's brief shows when Shoot notes is on.</p>
+ </div></section>
+
+ <div class="ticker" aria-hidden="true"><div class="track">${Array(2).fill(['Sweat? Set.','Helmet hair? Cancelled.','Shoes off. No apologies.','42°C outside. Sealed.','Three jobs. One squeeze.'].map(t=>`<span>${t}</span>`).join('')).join('')}</div></div>
+ <section><div class="wrap">
+  <div class="sec-head"><div><div class="eyebrow"><b>03</b><span class="m">Pick your problem</span></div><h2 class="d">What’s ruining<br>your day?</h2></div><a class="link" href="#shop">See all five fixes</a></div>
+  <div class="problems">${probs.map(([q,id,s,g])=>`<a class="prob" href="#p-${id}" style="background:${gv(g)}"><span class="q">${q}</span><img class="pk" src="${pim(pkOf(id)[0])}" alt="" loading="lazy"><span class="ft"><b>${esc(P[id].name)}</b><span>${s}</span></span></a>`).join('')}</div>
+ </div></section>
+
+ <section class="route" id="route"><div class="wrap">
+  <div class="sec-head"><div><div class="eyebrow"><b>04</b><span class="m">Build your routine</span></div><h2 class="d">How do you<br>get there?</h2></div><p class="mut" style="max-width:38ch;margin:0">Pick your commute. We tell you the two fixes that matter and when to use them. Skip the rest.</p></div>
+  <div class="rt-wrap"><div class="rt-tabs" role="tablist" aria-label="Your commute">${ROUTES.map(r=>`<button role="tab" data-route="${r.id}" aria-selected="${r.id===ROUTE}"><b>${r.label}</b><span>${r.who}</span></button>`).join('')}</div><div id="rtCard">${routeCard()}</div></div>
+ </div></section>
+ <section class="unsay" id="home-unsay"><div class="wrap">
+  <div class="eyebrow" style="justify-content:center"><b>05</b><span class="m">The Unsayables</span></div>
+  <div class="lines">
+   <div class="ln">Sweaty pits. <button type="button" class="uimg" aria-expanded="false" aria-label="Expand image: Sweat close-up">${ref('sweat05','Unsayables poster: macro of a sweat bead, deadpan.','','Sweat close-up',1)}</button></div>
+   <div class="ln o"><button type="button" class="uimg" aria-expanded="false" aria-label="Expand image: Shoe pile">${ref('feet09','Unsayables poster: top-down shoe pile, flash.','','Shoe pile',1)}</button> Smelly shoes.</div>
+   <div class="ln">Helmet hair. <button type="button" class="uimg" aria-expanded="false" aria-label="Expand image: Messy hair">${ref('hair09','Unsayables poster: wind-wrecked hair, graphic black and white.','','Messy hair',1)}</button></div>
+   <div class="ln r">We said it.</div>
+  </div>
+  <p class="hint m">Tap an image to open it</p>
+  <div class="ufoot"><p class="mut">Everyone else whispers about sweat. We name it, then fix it. The Unsayables is our poster series and journal for the things people don’t say out loud.</p><a class="btn btn-red" href="#shop">Fix the unsayable</a></div>
+ </div></section>
+
+ <section><div class="wrap split">
+  <div class="diptych">
+   ${ref('sweat13','Left frame: 8:12 at home, hard side light, applying Sweat Set.')}
+   ${ref('genz05','Right frame: 9:14 arrival with friends, flash, everyone fresh.')}
+   <span class="lab" style="left:18px"><small>08:12 · Leaving</small>Before</span>
+   <span class="lab" style="right:18px;text-align:right"><small>09:14 · Andheri</small>After</span>
+   <span class="stamp">Arriv’d<br><span style="font-size:.5em">still fresh</span></span>
+  </div>
+  <div>
+   <div class="eyebrow"><b>06</b><span class="m">Arriv’d</span></div>
+   <h2 class="d" style="font-size:clamp(48px,6vw,92px)">Leave fresh.<br>Arrive fresher.</h2>
+   <div class="ticks">
+    <div><b>01</b><p><strong>Built for 42°C</strong>Every formula is made for heat, humidity and life outside the AC.</p></div>
+    <div><b>02</b><p><strong>Says what it does</strong>Sweat, odour, frizz, UV, feet. No decoding, no beauty-speak.</p></div>
+    <div><b>03</b><p><strong>Never shames you</strong>Sweat is proof you showed up. We just handle the rest.</p></div>
+   </div>
+   <div style="margin-top:24px"><a class="btn btn-red" href="#c-kits">Build your kit</a></div>
+  </div>
+ </div></section>
+
+ <section style="background:var(--paper2)"><div class="wrap">
+  <div class="sec-head"><div><div class="eyebrow"><b>07</b><span class="m">Kits</span></div><h2 class="d">Pick a kit.<br>Save 15%.</h2></div><a class="link" href="#c-kits">All kits</a></div>
+  <div class="grid g3">${Object.keys(KITS).map(kitcard).join('')}</div>
+ </div></section>
+
+ <section><div class="wrap">
+  <div class="sec-head"><div><div class="eyebrow"><b>08</b><span class="m">#Arrivd</span></div><h2 class="d">The crew,<br>still fresh.</h2></div><a class="link" href="#home">Tag @arrivfresh</a></div>
+  <div class="crew">${[['genz01','Crew on a shop step, everyone holding a different bottle.','@meera.moves'],['genz03','Café table, flash, hands reaching for the kit.','@rohit.k'],['genz07','Sticker wall portrait, Sweat Set in hand.','@ishaan.wav'],['genz17','Tight duo portrait, flash, Cedar Noir.','@sana.a'],['genz13','Friends crammed in an auto, night.','@thecommutecrew'],['genz16','Group on a floor mattress, top-down.','@priya.r'],['genz18','Corner-shop flash, two friends.','@kabir_m']].map(r=>ref(r[0],r[1]).replace('</figure>',`<span class="h">${r[2]}</span></figure>`)).join('')}</div>
+ </div></section>
+
+ <section class="ink"><div class="wrap">
+  <div class="sec-head"><div><div class="eyebrow"><b>09</b><span class="m" style="color:var(--note)">Reviews</span></div><h2 class="d">Real commutes.<br>Real verdicts.</h2></div></div>
+  <div class="revs">${revCards([REV[0],REV[2],REV[6]])}</div>
+ </div></section>
+
+ <section><div class="wrap">
+  <div class="news">
+   <div><span class="m" style="color:var(--note)">The 9:14 drop</span><h2 class="d" style="margin-top:10px">10% off your<br>first order.</h2><p style="margin:12px 0 0;opacity:.85">New drops, sticker packs and the occasional Unsayable. Twice a month, no spam.</p></div>
+   <form id="newsForm"><input id="newsEmail" type="email" placeholder="you@email.com" aria-label="Email address" required><button class="btn btn-red" type="submit">Get 10% off</button></form>
+   <span class="stk" style="position:absolute;right:30px;top:24px;background:var(--note);transform:rotate(8deg)">Free stickers</span>
+  </div>
+ </div></section>`;}
+
+/* ——— COLLECTION ——— */
+function pageColl(key){const c=COLL[key];
+ let items=c.items.slice();
+ if(key==='shop'&&FILTER!=='All')items=items.filter(i=>P[i].zone===FILTER);
+ if(SORT==='low')items.sort((a,b)=>P[a].price-P[b].price);if(SORT==='high')items.sort((a,b)=>P[b].price-P[a].price);
+ const tabs=[['shop','All'],['c-sweat','Sweat'],['c-hair','Hair'],['c-sun','Sun'],['c-feet','Feet'],['c-kits','Kits']];
+ const n=c.kits?Object.keys(KITS).length:items.length;
+ let cards=items.map(id=>pcard(id));
+ const ed=key==='c-sweat'?['sweat04','Sweat is proof you showed up.','sweat-set']:key==='c-hair'?['hair01','Wind, helmet, humidity. Still fine.','hair-mist']:key==='c-feet'?['feet14','Kick them off anywhere.','cool-sole']:key==='c-sun'?['sun12','The sun doesn’t take days off.','sunseal']:['pastel12','Six bottles. One loud routine.','hair-mist'];
+ const edTile=`<article class="edit">${ref(ed[0],'Editorial tile in the grid: campaign image with one bold line.')}<div class="tx"><b>${ed[1]}</b><a class="btn btn-red" href="#p-${ed[2]}" style="justify-self:start;padding:12px 18px">Shop the look</a></div></article>`;
+ if(!c.kits){cards.splice(Math.min(2,cards.length),0,edTile)}
+ return crumb([['Home','home'],['Shop','shop'],[c.t]])+`
+ <div class="chead"><div class="wrap">
+  <div class="top"><h1 class="d">${c.t}<sup>${n} ${c.kits?'kits':n===1?'fix':'fixes'}</sup></h1><p class="lede">${esc(c.sub)}</p></div>
+  <div class="cstrip">${c.strip.map((r,i)=>ref(r,'Collection header strip: '+c.notes[i]+'.')).join('')}</div>
+ </div></div>
+ <div class="ctabs"><div class="wrap">
+  <nav class="tabs" aria-label="Collections">${tabs.map(t=>`<a href="#${t[0]}" class="${t[0]===key?'on':''}">${t[1]}</a>`).join('')}</nav>
+  <div class="tools"><span class="count">${n} result${n===1?'':'s'}</span>${c.kits?'':`<label class="count" for="sort" style="position:absolute;left:-9999px">Sort</label><select id="sort" aria-label="Sort products"><option value="feat"${SORT==='feat'?' selected':''}>Featured</option><option value="low"${SORT==='low'?' selected':''}>Price: low to high</option><option value="high"${SORT==='high'?' selected':''}>Price: high to low</option></select>`}</div>
+ </div></div>
+ <section style="padding-top:32px"><div class="wrap">
+  ${key==='shop'?`<div class="chips" role="group" aria-label="Filter by zone">${['All','Body','Hair','Face','Feet'].map(z=>`<button data-filter="${z}" aria-pressed="${FILTER===z}">${z}</button>`).join('')}</div>`:''}
+  ${c.kits?`<div class="grid g3">${Object.keys(KITS).map(kitcard).join('')}</div>`:`<div class="grid g4">${cards.join('')}</div>`}
+ </div></section>
+ ${!c.kits?`<section style="background:var(--paper2)"><div class="wrap">
+  <div class="sec-head"><div><span class="m">Bundle and save</span><h2 class="d" style="margin-top:10px">Make it a kit.</h2></div><a class="link" href="#c-kits">All kits</a></div>
+  <div class="grid g3">${Object.keys(KITS).map(kitcard).join('')}</div></div></section>`:''}
+ <section class="ink"><div class="wrap">
+  <div class="sec-head"><div><span class="m" style="color:var(--note)">Shop by moment</span><h2 class="d" style="margin-top:10px">Your day,<br>by the minute.</h2></div></div>
+  <div class="moments">${[['07:50','Out the door','Shoes on, already warm.','feet04','cool-sole','Shoes and socks by the door, morning flash.'],['08:42','The local','Packed coach, no fan.','genz09','sweat-set','Crowded train, arm up on the rail.'],['13:10','Lunch walk','34°C, direct sun.','sun04','sunseal','Arm raised to a hard blue sky.'],['18:30','Helmet off','Humidity at its peak.','hair05','hair-mist','Hair flip on cobalt, flash.']].map(m=>`<a class="mo" href="#p-${m[4]}">${ref(m[3],m[5],'','',1)}<div class="tx"><time>${m[0]}</time><b>${m[1]}</b><span>${m[2]} · ${esc(P[m[4]].name)} →</span></div></a>`).join('')}</div>
+ </div></section>
+ <section><div class="wrap">
+  <div class="sec-head"><div><span class="m">Not sure?</span><h2 class="d" style="margin-top:10px">Which one<br>do I need?</h2></div></div>
+  <div class="cmp"><table><thead><tr><th>Problem</th>${ORDER.map(id=>`<th><img src="${pim(pkOf(id)[0])}" alt="">${esc(P[id].name)}</th>`).join('')}</tr></thead><tbody>
+  ${[['Sweat',['sweat-set','body-cream']],['Body odour',['sweat-set','body-cream']],['Chafing',['body-cream']],['Frizz + helmet hair',['hair-mist']],['UV on skin',['sunseal']],['UV on hair',['hair-mist']],['Shoe odour',['cool-sole']]].map(([k,ids])=>`<tr><td>${k}</td>${ORDER.map(id=>`<td>${ids.includes(id)?'<span class="y" aria-label="Yes">✓</span>':'<span class="n" aria-label="No">—</span>'}</td>`).join('')}</tr>`).join('')}
+  </tbody></table></div>
+ </div></section>`;}
+
+/* ——— PDP ——— */
+let GI=0;
+function galMain(id,i){const p=P[id];const [pk,c]=pkOf(id);
+ if(i===0)return `<div class="gmain" id="gmain" style="background:${gv(p.g)}"><span class="bigtx">${esc(p.bold)}</span><img class="pk" src="${pim(pk)}" alt="${esc(p.full)}"><span class="stk" style="background:var(--${c});top:18px;left:18px;transform:rotate(-6deg)">${esc(p.tags[0])}</span><span class="stk" style="background:var(--note);top:22px;right:18px;transform:rotate(7deg)">Made for 42°C</span></div>`;
+ const g=p.gal[i-1];return `<div class="gmain" id="gmain">${ref(g[0],g[1])}</div>`;}
+const PACK={'sweat-set':'roll-on','hair-mist':'spray','body-cream':'tube','cool-sole':'spray','sunseal':'tube'};
+const SIZE={'sweat-set':50,'hair-mist':100,'body-cream':100,'cool-sole':50,'sunseal':50};
+function pagePDP(id){const p=P[id];if(!p)return pageHome();const [pk,c]=pkOf(id);GI=0;
+ const others=ORDER.filter(x=>x!==id&&P[x].avail).slice(0,2);const fbt=[id,...others].filter(x=>P[x].avail);
+ const vars=p.scents?`<div class="opt"><span class="m">Scent · ${VAR[id]}</span><div class="vars" role="group" aria-label="Scent">${p.scents.map(s=>`<button class="var" data-var="${id}|${s[0]}" aria-pressed="${s[0]===VAR[id]}"><span class="sw" style="background:var(--${s[3]})"><img src="${pim(s[2])}" alt=""></span><span><b>${s[0]}</b><span>${s[1]}</span></span></button>`).join('')}</div></div>`:'';
+ const cta=p.avail?`<p class="buyhint">↓ Add to cart and Buy now stay pinned to the bottom of your screen.</p>`
+  :`<form class="notify" data-notify="${id}"><input id="notify-${id}" type="email" placeholder="Your email" aria-label="Email for restock alert" required><button class="btn btn-red" type="submit">Notify me</button></form>`;
+ const revs=REV.filter(r=>r.p===id);const avg=(revs.reduce((s,r)=>s+r.r,0)/Math.max(1,revs.length)).toFixed(1);
+ const thumbs=[`<button data-gi="0" aria-pressed="true" aria-label="Image 1, product" style="background:${gv(p.g)}"><img class="pkt" src="${pim(pk)}" alt=""></button>`].concat(p.gal.map((g,i)=>`<button data-gi="${i+1}" aria-pressed="false" aria-label="Image ${i+2}, shoot reference"><img src="img/r_${g[0]}.jpg" alt="" loading="lazy"><span class="n">REF</span></button>`));
+ return crumb([['Home','home'],[COLL[p.coll].t,p.coll],[p.name]])+`
+ <div class="wrap pdp">
+  <div class="gal"><div class="thumbs" role="group" aria-label="Product images">${thumbs.join('')}</div><div id="gwrap">${galMain(id,0)}</div>
+   <div class="gcap"><span id="gcapL">01 / ${p.gal.length+1} · Product shot · Pinterest ref</span><span>Images 02–${String(p.gal.length+1).padStart(2,'0')}: shoot references</span></div>
+   <div class="perks gperks"><div>${IC.truck}Free ship ₹499+</div><div>${IC.flask}Derm tested</div><div>${IC.back}7-day returns</div><div>${IC.sun}Made for 42°C</div></div></div>
+  <div class="buy" id="buybox">
+   <div class="eb"><span class="m">${esc(p.zone)} · ${esc(p.eyebrow)}</span>${p.avail?'':'<span class="tags"><span style="background:var(--paper2)">Back soon</span></span>'}</div>
+   <h1 class="d">${esc(p.full)}</h1>
+   <div class="bold">${esc(p.bold)}</div>
+   ${SIZE[id]?`<div class="size"><span class="sz">${SIZE[id]} ml</span><span class="szl">Net qty · ${SIZE[id]} ml ${PACK[id]||'pack'}</span></div>`:''}
+   <p class="sub">${esc(p.sub)}</p>
+   <div class="rating"><span class="stars" aria-hidden="true">★★★★★</span><b>${avg}</b><a href="#pdp-rev" class="mut" style="text-decoration:underline">${revs.length} reviews</a></div>
+   <div class="pr"><span class="p">${rupee(p.price)}</span><s>${rupee(p.mrp)}</s><span class="off">${Math.round((1-p.price/p.mrp)*100)}% off</span>${SIZE[id]?`<span class="per">for ${SIZE[id]} ml · ₹${(p.price/SIZE[id]*10).toFixed(1)} / 10 ml</span>`:''}</div>
+   <span class="tax">Inclusive of all taxes · ${p.price>=499?'Ships free':'Free shipping over ₹499'}</span>
+   <div class="coupon"><div><b>Extra 10% off</b><div style="font-size:13px">On your first order, applied at checkout</div></div><code>ARRIVD10</code></div>
+   <span class="stock ${p.avail?'':'out'}"><i></i>${p.avail?'In stock · dispatched within 24 hours':'Sold out · join the restock list'}</span>
+   <div class="benefits" style="--tc:var(--${c})" aria-label="Key benefits">${p.tags.map(t=>`<span><i aria-hidden="true">✓</i>${esc(t)}</span>`).join('')}</div>
+   ${vars}
+   <div class="bx"><span class="m bx-h">Made for</span><div class="uses">${TOP[id].uses.map(u=>`<div class="use"><span class="ui" style="background:${gv(p.g)}"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">${SI[u[0]]}</svg></span><b>${esc(u[1])}</b><span>${esc(u[2])}</span></div>`).join('')}</div></div>
+   <div class="bx"><span class="m bx-h">Hero ingredients</span><div class="hing">${TOP[id].ing.map(g=>`<div class="hi"><img src="img/${g[2]}.webp" alt="${esc(g[0])}" loading="lazy"><b>${esc(g[0])}</b><span>${esc(g[1])}</span></div>`).join('')}</div><a class="bx-link" href="#pdp-info">Full ingredients, directions &amp; warnings ↓</a></div>
+   <div class="bx"><span class="m bx-h">Pairs well with</span><div class="pairs">${(PAIRS[id]||[]).map(([x,why])=>{const q=P[x];return `<div class="pair"><a class="pth" href="#p-${x}" style="background:${gv(q.g)}"><img src="${pim(pkOf(x)[0])}" alt=""></a><a class="pmid" href="#p-${x}"><b>${esc(q.name)}</b><span>${esc(why)}</span></a><div class="pend"><span class="pp">${rupee(q.price)}</span>${q.avail?`<button class="padd" data-add="${x}" aria-label="Add ${esc(q.name)} to cart">+ Add</button>`:`<a class="padd out" href="#p-${x}">Notify</a>`}</div></div>`}).join('')}</div></div>
+   ${cta}
+  </div>
+ </div>
+ <section class="ink"><div class="wrap">
+  <div class="sec-head"><div><span class="m" style="color:var(--note)">What it does</span><h2 class="d" style="margin-top:10px">Four jobs.<br>One bottle.</h2></div></div>
+  <div class="jobs">${p.helps.map((h,i)=>`<div class="job" style="background:${['var(--'+c+')','var(--paper)','var(--signal)','var(--note)'][i]};color:${i===2?'#fff':'var(--ink)'}"><span class="n">0${i+1}</span><b>${esc(h[0])}</b><span>${esc(h[1])}</span></div>`).join('')}</div>
+ </div></section>
+ <section><div class="wrap"><div class="wide" style="background:var(--${c})">${ref(p.moment[0],p.moment[4])}<div class="tx"><span class="m">${esc(p.moment[1])}</span><h3 class="d">${esc(p.moment[2])}</h3><p>${esc(p.moment[3])}</p><div><a class="btn btn-red" href="#" data-add="${id}">Add to cart</a></div></div></div></div></section>
+ <section class="ink"><div class="wrap split" style="align-items:start">
+  <div><span class="m" style="color:var(--note)">Inside the formula</span><h2 class="d" style="margin-top:10px;font-size:clamp(48px,6vw,92px)">Ingredients,<br>in plain English.</h2><p class="mut" style="font-size:17px;max-width:40ch">No decoding. What’s in it and what each one does, in one line.</p></div>
+  <div class="ings">${p.ings.map(x=>`<div class="ing"><span class="role">${esc(x[1])}</span><b>${esc(x[0])}</b><p>${esc(x[2])}</p></div>`).join('')}</div>
+ </div></section>
+ <section><div class="wrap">
+  <div class="sec-head"><div><span class="m">How to use</span><h2 class="d" style="margin-top:10px">Three steps.<br>No fuss.</h2></div></div>
+  <div class="steps">${p.steps.map((s,i)=>`<div class="step">${ref(s[2],'Step '+(i+1)+' visual: '+s[0].toLowerCase()+', shot in hard flash on a power ground.')}<div class="sb"><b><i>0${i+1}</i>${esc(s[0])}</b><span class="mut">${esc(s[1])}</span></div></div>`).join('')}</div>
+ </div></section>
+ ${fbt.length>1?`<section style="background:var(--paper2)"><div class="wrap">
+  <div class="sec-head"><div><span class="m">Often bought together</span><h2 class="d" style="margin-top:10px">Make it a routine.</h2></div></div>
+  <div class="fbt" id="fbt">${fbt.map(x=>`<label class="fb"><input type="checkbox" checked data-fbt="${x}" id="fbt-${x}"><span class="sw" style="background:${gv(P[x].g)}"><img src="${pim(pkOf(x)[0])}" alt=""></span><b>${esc(P[x].name)}</b><span class="price">${rupee(P[x].price)}</span></label>`).join('')}
+   <div class="fbsum"><div><span class="m" style="color:var(--note)">Routine total</span><div class="t" id="fbtTotal">${rupee(fbt.reduce((s,x)=>s+P[x].price,0))}</div></div><button class="btn btn-red" data-act="fbt">Add selected</button></div></div>
+ </div></section>`:''}
+ <section class="ink" id="pdp-rev"><div class="wrap">
+  <div class="sec-head"><div><span class="m" style="color:var(--note)">${avg} ★ · ${revs.length} reviews</span><h2 class="d" style="margin-top:10px">The verdict.</h2></div></div>
+  <div class="revs">${revCards(revs.length?revs:REV.slice(0,3))}</div>
+ </div></section>
+ <section><div class="wrap faq"><div><span class="m">Good to know</span><h2 class="d" style="margin-top:10px;font-size:clamp(48px,6vw,88px)">Questions,<br>answered.</h2></div>${faqAcc(p.faq)}</div></section>
+ <section class="clin" id="pdp-info"><div class="wrap">
+  <div class="clin-head"><div><span class="clin-k">Product information</span><h2>${esc(p.full)}</h2></div><div class="clin-meta"><span>Category<b>${esc(p.zone)} · ${esc(p.eyebrow)}</b></span><span>Testing<b>Dermatologically tested</b></span><span>Use<b>External use only</b></span></div></div>
+  <div class="clin-grid">
+   <div class="clin-col"><h3><span>01</span>Directions for use</h3><ol>${p.steps.map(st=>`<li><b>${esc(st[0])}</b>${esc(st[1])}</li>`).join('')}</ol></div>
+   <div class="clin-col"><h3><span>02</span>Key ingredients</h3><table><thead><tr><th>Ingredient</th><th>Function</th></tr></thead><tbody>${p.ings.map(x=>`<tr><td>${esc(x[0])}</td><td>${esc(x[1])}<small>${esc(x[2])}</small></td></tr>`).join('')}</tbody></table></div>
+   <div class="clin-col warn"><h3><span>03</span>Warning &amp; caution</h3><p>${esc(p.warn)}</p><ul><li>Keep out of reach of children.</li><li>Store in a cool, dry place away from direct sunlight.</li><li>Discontinue use if irritation occurs.</li></ul></div>
+  </div>
+ </div></section>
+ <section style="background:var(--paper2)"><div class="wrap">
+  <div class="sec-head"><div><span class="m">More from Arriv</span><h2 class="d" style="margin-top:10px">You might<br>also need.</h2></div></div>
+  <div class="grid g4">${ORDER.filter(x=>x!==id).map(x=>pcard(x)).join('')}</div>
+ </div></section>`;}
+
+/* ——— mega + drawers ——— */
+function buildMega(){$('#mega').innerHTML=`<div class="wrap">
+ <div><h5 class="m">Shop by fix</h5><div class="mprods">${ORDER.map(id=>`<a class="mp" href="#p-${id}"><span class="sw" style="background:${gv(P[id].g)}"><img src="${pim(pkOf(id)[0])}" alt=""></span><b>${esc(P[id].name)}</b><span>${esc(P[id].bold)}</span></a>`).join('')}<a class="mp" href="#c-kits"><span class="sw" style="background:var(--note)"><img src="${pim('kit_h2t')}" alt=""></span><b>Kits</b><span>Save up to 15%</span></a></div></div>
+ <div><h5 class="m">Shop by problem</h5><div class="mlist">${[['Sweat','c-sweat','2 fixes'],['Helmet hair','c-hair','1 fix'],['2 PM sun','c-sun','2 fixes'],['Smelly shoes','c-feet','1 fix'],['All five','shop','5 fixes']].map(l=>`<a href="#${l[1]}">${l[0]}<span>${l[2]}</span></a>`).join('')}</div></div>
+ <a class="mcard" href="#c-kits">${ref('genz01','Mega-menu feature: crew holding the full kit, flash.','','',1)}<div class="tx"><b>The Head-to-Toe Kit</b><span class="btn btn-red" style="padding:10px 16px">Save 15%</span></div></a>
+</div>`;}
+function totals(){let s=0,n=0;CART.forEach(l=>{const pr=l.kit?KITS[l.kit].price:P[l.id].price;s+=pr*l.q;n+=l.q});return {s,n}}
+function syncCt(){const t=totals();$('#cartCt').textContent=t.n;$('#cartCt').hidden=!t.n;$('#wishCt').textContent=WISH.length;$('#wishCt').hidden=!WISH.length}
+function openCart(){const t=totals();const left=Math.max(0,499-t.s);
+ $('#layer').innerHTML=`<div class="drawer" id="dr"><div class="scrim" data-close="1"></div><aside class="panel" role="dialog" aria-label="Cart"><div class="panel-h"><h3 class="d">Your bag (${t.n})</h3><button class="x" data-close="1" aria-label="Close">×</button></div>
+ <div class="panel-b"><div class="ship-bar">${left?`Add <b>${rupee(left)}</b> for free shipping`:'<b>Free shipping unlocked.</b>'}<div class="bar"><i style="width:${Math.min(100,t.s/499*100)}%"></i></div></div><p class="stk-note">✺ A free Arriv sticker pack ships with every order.</p>
+ ${CART.length?CART.map((l,i)=>{const it=l.kit?KITS[l.kit]:P[l.id];const img=l.kit?it.img:(l.v?(P[l.id].scents.find(s=>s[0]===l.v)||[])[2]:P[l.id].pk);const g=l.kit?it.g:P[l.id].g;return `<div class="ci"><span class="th" style="background:${gv(g)}"><img src="${pim(img)}" alt=""></span><div><b>${esc(it.name)}</b><span class="mut" style="font-size:12.5px">${l.v?esc(l.v):l.kit?'Kit':esc(P[l.id].eyebrow)}</span><div class="qty"><button data-q="${i}|-1" aria-label="Decrease">−</button><span>${l.q}</span><button data-q="${i}|1" aria-label="Increase">+</button></div></div><span class="price">${rupee(it.price*l.q)}</span></div>`}).join(''):'<p class="mut" style="padding:30px 0">Your bag is empty. The commute isn’t.</p>'}
+ </div><div class="panel-f"><div style="display:flex;justify-content:space-between;font:400 24px/1 var(--f-d);text-transform:uppercase"><span>Subtotal</span><span>${rupee(t.s)}</span></div><button class="btn btn-red" data-close="1">Checkout</button><span class="mut" style="font-size:12px;text-align:center">Prototype: checkout is not connected.</span></div></aside></div>`;}
+function openMenu(){$('#layer').innerHTML=`<div class="drawer left"><div class="scrim" data-close="1"></div><aside class="panel" role="dialog" aria-label="Menu"><div class="panel-h"><span class="logo" style="color:var(--ink)">Arriv</span><button class="x" data-close="1" aria-label="Close">×</button></div><div class="panel-b"><nav class="mnav">${[['Shop all','shop'],['Sweat','c-sweat'],['Hair','c-hair'],['Sun','c-sun'],['Feet','c-feet'],['Kits','c-kits'],['The Unsayables','home-unsay']].map(l=>`<a href="#${l[1]}" data-close="1">${l[0]}</a>`).join('')}</nav>
+ <div class="mprods" style="margin-top:20px">${ORDER.slice(0,3).map(id=>`<a class="mp" href="#p-${id}" data-close="1"><span class="sw" style="background:${gv(P[id].g)}"><img src="${pim(pkOf(id)[0])}" alt=""></span><b>${esc(P[id].name)}</b></a>`).join('')}</div></div></aside></div>`;}
+function closeLayer(){$('#layer').innerHTML=''}
+let tT;function toast(m){const t=$('#toast');t.textContent=m;t.hidden=false;clearTimeout(tT);tT=setTimeout(()=>t.hidden=true,2000)}
+function save(){store.set('cart',CART);store.set('wish',WISH);syncCt()}
+function add(id,q=1){const p=P[id];if(!p.avail)return;const v=p.scents?VAR[id]:null;const ex=CART.find(l=>l.id===id&&l.v===v);if(ex)ex.q+=q;else CART.push({id,v,q});save();toast(p.name+' added');openCart()}
+function setSatc(id){const s=$('#satc');if(!id){s.classList.remove('show');s.innerHTML='';document.body.classList.remove('pdp-on');return}
+ const p=P[id];const [pk]=pkOf(id);document.body.classList.add('pdp-on');
+ s.innerHTML=`<div class="wrap"><span class="th" style="background:${gv(p.g)}"><img src="${pim(pk)}" alt=""></span><div class="sp"><b>${esc(p.name)}</b><div class="mut" style="font-size:12.5px">${rupee(p.price)} <s>${rupee(p.mrp)}</s>${SIZE[id]?' · '+SIZE[id]+' ml':''}${p.scents?' · '+VAR[id]:''}</div></div>
+  <button class="wishbig sm" data-wish="${id}" aria-pressed="${WISH.includes(id)}" aria-label="Save to wishlist">${IC.heart}</button>
+  ${p.avail?`<button class="btn btn-red" data-add="${id}">Add to cart · ${rupee(p.price)}</button><button class="btn btn-red" data-buynow="${id}">Buy now</button>`:`<a class="btn btn-red" href="#notify-${id}" data-focus="notify-${id}">Notify me when it's back</a>`}</div>`;
+ s.classList.add('show');s.setAttribute('aria-hidden','false');}
+
+/* ——— router ——— */
+function route(){const h=(location.hash||'#home').slice(1);$('#mega').hidden=true;$('#shopBtn').setAttribute('aria-expanded','false');closeLayer();
+ let html,pb='home';
+ if(h.startsWith('p-')&&P[h.slice(2)]){html=pagePDP(h.slice(2));pb='p'}
+ else if(COLL[h]){html=pageColl(h);pb='shop'}
+ else html=pageHome();
+ $('#main').innerHTML=html;vidObs.disconnect();wireUgc();wireHero();
+ $$('.pbar a').forEach(a=>a.classList.toggle('on',a.dataset.pb===pb));
+ $$('.nav a[data-nav]').forEach(a=>a.classList.toggle('on',a.dataset.nav===h));
+ if(h==='home-unsay'){requestAnimationFrame(()=>document.getElementById('home-unsay')?.scrollIntoView())}else window.scrollTo(0,0);
+ setSatc(pb==='p'?h.slice(2):null);
+}
+
+const vidObs=new IntersectionObserver(es=>es.forEach(e=>{const v=e.target;if(e.isIntersecting&&e.intersectionRatio>.6){v.play().catch(()=>{})}else v.pause()}),{threshold:[0,.6,1]});
+function wireUgc(){if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;$$('.ugc-card video').forEach(v=>{v.preload='metadata';vidObs.observe(v)})}
+
+let HI=0,HT=null;
+function heroGo(n){const sl=$$('.hs');if(!sl.length)return;HI=(n+sl.length)%sl.length;sl.forEach((el,i)=>{el.classList.toggle('on',i===HI);el.setAttribute('aria-hidden',i===HI?'false':'true')});$$('.hdots button').forEach((b,i)=>{b.setAttribute('aria-current',i===HI?'true':'false');if(i===HI){b.style.animation='none';b.offsetWidth;b.style.animation=''}});heroTimer()}
+function heroTimer(){clearTimeout(HT);const h=$('#hero');if(!h||h.classList.contains('paused')||matchMedia('(prefers-reduced-motion: reduce)').matches)return;HT=setTimeout(()=>heroGo(HI+1),5500)}
+function wireHero(){HI=0;const h=$('#hero');if(!h){clearTimeout(HT);return}
+ h.addEventListener('mouseenter',()=>{h.classList.add('paused');clearTimeout(HT)});h.addEventListener('mouseleave',()=>{h.classList.remove('paused');heroTimer()});
+ let x0=null;h.addEventListener('touchstart',e=>{x0=e.touches[0].clientX},{passive:true});h.addEventListener('touchend',e=>{if(x0==null)return;const dx=e.changedTouches[0].clientX-x0;if(Math.abs(dx)>40)heroGo(HI+(dx<0?1:-1));x0=null});
+ heroTimer()}
+addEventListener('hashchange',route);
+
+document.addEventListener('click',e=>{const nf=e.target.closest('[data-focus]');if(nf){e.preventDefault();const el=document.getElementById(nf.dataset.focus);if(el){el.scrollIntoView({block:'center'});el.focus()}}});
+document.addEventListener('click',e=>{const rb=e.target.closest('[data-route]');if(rb){ROUTE=rb.dataset.route;$$('[data-route]').forEach(b=>b.setAttribute('aria-selected',String(b.dataset.route===ROUTE)));$('#rtCard').innerHTML=routeCard();return}const ar=e.target.closest('[data-addroute]');if(ar){const r=ROUTES.find(x=>x.id===ar.dataset.addroute);routeItems(r).filter(i=>P[i].avail).forEach(id=>{const v=P[id].scents?VAR[id]:null;const ex=CART.find(l=>l.id===id&&l.v===v);if(ex)ex.q++;else CART.push({id,v,q:1})});save();toast('Routine added');openCart()}});
+document.addEventListener('click',e=>{const ub=e.target.closest('.uimg');if(ub){const on=ub.getAttribute('aria-expanded')!=='true';$$('.uimg').forEach(x=>x.setAttribute('aria-expanded','false'));ub.setAttribute('aria-expanded',String(on))}});
+document.addEventListener('click',e=>{const hb=e.target.closest('[data-hero],[data-hgo]');if(hb){if(hb.dataset.hgo!==undefined)heroGo(+hb.dataset.hgo);else heroGo(HI+(+hb.dataset.hero));}});
+document.addEventListener('click',e=>{const sb=e.target.closest('[data-snd]');if(sb){const v=sb.closest('.ugc-card').querySelector('video');const turnOn=v.muted;$$('.ugc-card video').forEach(x=>{x.muted=true});$$('[data-snd]').forEach(b=>{b.setAttribute('aria-pressed','false');b.setAttribute('aria-label','Unmute')});if(turnOn){v.muted=false;v.play().catch(()=>{});sb.setAttribute('aria-pressed','true');sb.setAttribute('aria-label','Mute')}return}
+ const ar=e.target.closest('[data-ugc]');if(ar){const r=$('#ugcRow');r.scrollBy({left:(+ar.dataset.ugc)*r.clientWidth*.8,behavior:'smooth'})}},true);
+document.addEventListener('click',e=>{const t=e.target.closest('[data-add],[data-addkit],[data-wish],[data-q],[data-close],[data-gi],[data-var],[data-filter],[data-act],[data-buynow]');if(!t)return;const d=t.dataset;
+ if(d.add){e.preventDefault();add(d.add);return}
+ if(d.buynow){add(d.buynow);return}
+ if(d.addkit){const ex=CART.find(l=>l.kit===d.addkit);if(ex)ex.q++;else CART.push({kit:d.addkit,q:1});save();toast(KITS[d.addkit].name+' added');openCart();return}
+ if(d.wish){e.preventDefault();const i=WISH.indexOf(d.wish);if(i<0)WISH.push(d.wish);else WISH.splice(i,1);save();$$(`[data-wish="${d.wish}"]`).forEach(b=>b.setAttribute('aria-pressed',i<0));toast(i<0?'Saved':'Removed');return}
+ if(d.q){const [i,dl]=d.q.split('|').map(Number);CART[i].q+=dl;if(CART[i].q<=0)CART.splice(i,1);save();openCart();return}
+ if(d.close){if(t.tagName==='A')closeLayer();else{e.preventDefault();closeLayer()}return}
+ if(d.gi!==undefined){const id=location.hash.slice(3);const i=+d.gi;$('#gwrap').innerHTML=galMain(id,i);$$('.thumbs button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.gi==d.gi));const p=P[id];$('#gcapL').textContent=`${String(i+1).padStart(2,'0')} / ${p.gal.length+1} · ${i?'Shoot reference':'Packshot on '+p.g+' ground'}`;return}
+ if(d.var){const [id,v]=d.var.split('|');VAR[id]=v;const y=scrollY;route();scrollTo(0,y);return}
+ if(d.filter){FILTER=d.filter;const y=scrollY;route();scrollTo(0,y);return}
+ if(d.act==='fbt'){$$('[data-fbt]').filter(c=>c.checked).forEach(c=>{const id=c.dataset.fbt;const v=P[id].scents?VAR[id]:null;const ex=CART.find(l=>l.id===id&&l.v===v);if(ex)ex.q++;else CART.push({id,v,q:1})});save();toast('Routine added');openCart();return}
+});
+document.addEventListener('change',e=>{if(e.target.id==='sort'){SORT=e.target.value;const y=scrollY;route();scrollTo(0,y)}
+ if(e.target.dataset.fbt){const tot=$$('[data-fbt]').filter(c=>c.checked).reduce((s,c)=>s+P[c.dataset.fbt].price,0);$('#fbtTotal').textContent=rupee(tot)}});
+document.addEventListener('submit',e=>{e.preventDefault();const f=e.target;if(f.id==='newsForm'){toast('You’re in. Check your inbox.');f.reset()}if(f.dataset.notify){toast('We’ll email you on restock');f.reset()}});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeLayer();$('#mega').hidden=true;$('#shopBtn').setAttribute('aria-expanded','false')}});
+$('#shopBtn').addEventListener('click',()=>{const m=$('#mega');m.hidden=!m.hidden;$('#shopBtn').setAttribute('aria-expanded',String(!m.hidden))});
+$('#hdr').addEventListener('mouseleave',()=>{if(matchMedia('(hover:hover)').matches){$('#mega').hidden=true;$('#shopBtn').setAttribute('aria-expanded','false')}});
+$('#shopBtn').addEventListener('mouseenter',()=>{if(matchMedia('(hover:hover)').matches){$('#mega').hidden=false;$('#shopBtn').setAttribute('aria-expanded','true')}});
+$('#cartBtn').addEventListener('click',openCart);$('#burger').addEventListener('click',openMenu);
+$('#notesBtn').addEventListener('click',e=>{const on=document.body.classList.toggle('notes');e.currentTarget.setAttribute('aria-pressed',on);store.set('notes',on)});
+$('#refBtn').addEventListener('click',e=>{const on=document.body.classList.toggle('clean');e.currentTarget.setAttribute('aria-pressed',on)});
+if(store.get('notes',false)){document.body.classList.add('notes');$('#notesBtn').setAttribute('aria-pressed','true')}
+$('#ann').innerHTML=Array(2).fill(['Free shipping over ₹499','Free sticker pack in every order','Built for 42°C','7-day returns','Derm tested','Extra 10% off with ARRIVD10'].map(t=>`<span>${t}</span>`).join('')).join('');
+buildMega();syncCt();route();
+</script>
